@@ -7,6 +7,8 @@ import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Portfolio from './components/Portfolio';
 import CoinDetail from './components/CoinDetail';
+import AccountsPage from './components/AccountsPage';
+import UpdateAccountsPage from './components/UpdateAccountsPage';
 
 function App() {
   const dispatch = useDispatch()
@@ -35,6 +37,14 @@ function App() {
           <Route path="/markets/:id">
             <Nav/>
             <CoinDetail/>
+          </Route>
+          <Route path="/accounts">
+            <Nav/>
+            <AccountsPage/>
+          </Route>
+          <Route path="/updateaccounts">
+            <Nav/>
+            <UpdateAccountsPage/>
           </Route>
         </Switch>
       </div>
