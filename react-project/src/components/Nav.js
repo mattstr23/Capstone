@@ -29,9 +29,9 @@ export default function Nav() {
 				    		</NavLink>
 				    	</li>
 						<li className="navLinks">
-				    		<NavLink exact to="/registration" activeClassName="active"className="navLink" onClick={handleClick}>
-				    			<i class="fas fa-money-check-alt"></i>
-				    			Register
+				    		<NavLink exact to="/accounts" activeClassName="active"className="navLink" onClick={handleClick}>
+							<i class="fas fa-user-circle"></i>
+				    			Account
 				    		</NavLink>
 				    	</li>
 				    </ul>
