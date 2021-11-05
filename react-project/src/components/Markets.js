@@ -13,6 +13,9 @@ export default function Markets() {
     const cryptoFilter = markets?.data?.filter(coin => 
         coin.name.toLowerCase().includes(searchValue.toLowerCase()))
 
+    
+
+
     return (
         <div className="marketsPage">
             
@@ -25,7 +28,7 @@ export default function Markets() {
                 <input className="searchBar"onChange={searchHandle} type="search" placeholder="Lookup Crypto"/>
             </div>
             <div className="coinCont">
-                {cryptoFilter.map((coin) => <Coin key={coin.id}coin={coin}/>)}
+                {cryptoFilter?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
             </div>
 
         </div>
