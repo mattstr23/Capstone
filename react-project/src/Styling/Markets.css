@@ -39,6 +39,7 @@
 .searchBar {
 	width: 200px;
 }
+
 @keyframes slowLoad {
 	from {
 		opacity: 0;
