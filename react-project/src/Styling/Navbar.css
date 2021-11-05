@@ -55,6 +55,11 @@
 .navLinks i {
 	padding-right: 0.5rem;
 }
+
+.fa-user-circle{
+	font-size: 19px;
+}
+
 .navLinks:after {
 	content: "";
 	display: block;
