@@ -36,6 +36,9 @@
 	text-decoration: underline;
 	font-family: "Orbitron", sans-serif;
 }
+.searchBar {
+	width: 200px;
+}
 @keyframes slowLoad {
 	from {
 		opacity: 0;
