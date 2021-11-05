@@ -28,7 +28,7 @@ export default function Markets() {
                 <input className="searchBar"onChange={searchHandle} type="search" placeholder="Lookup Crypto"/>
             </div>
             <div className="coinCont">
-                {cryptoFilter.map((coin) => <Coin key={coin.id}coin={coin}/>)}
+                {cryptoFilter?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
             </div>
 
         </div>
