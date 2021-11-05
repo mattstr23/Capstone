@@ -28,6 +28,12 @@ export default function Nav() {
 				    			Portfolio
 				    		</NavLink>
 				    	</li>
+						<li className="navLinks">
+				    		<NavLink exact to="/registration" activeClassName="active"className="navLink" onClick={handleClick}>
+				    			<i class="fas fa-money-check-alt"></i>
+				    			Register
+				    		</NavLink>
+				    	</li>
 				    </ul>
                     <div className="menuButtons" onClick={handleClick}>
                         <i className={clicked ? "fas fa-times": "fas fa-bars"}></i>

@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Portfolio from './components/Portfolio';
 import CoinDetail from './components/CoinDetail';
+import Registration from './components/Registration';
 
 function App() {
   const dispatch = useDispatch()
@@ -24,7 +25,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" exact component={Landing} />
-          <Route path="/markets" exact>
+          <Route path="/markets">
             <Nav />
             <Markets />
           </Route>
@@ -35,6 +36,10 @@ function App() {
           <Route path="/markets/:id">
             <Nav/>
             <CoinDetail/>
+          </Route>
+          <Route path="/registration">
+            <Nav/>
+            <Registration/>
           </Route>
         </Switch>
       </div>
