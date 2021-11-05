@@ -32,7 +32,7 @@
 	margin-bottom: 5px;
 }
 
-.Go {
+.loginBut {
 	font-family: "Exo", sans-serif;
 	width: 160px;
 	height: 40px;
@@ -44,13 +44,13 @@
 	border-radius: 5px;
 	cursor: pointer;
 }
-.Go:hover {
+.loginBut:hover {
 	background-color: #0c2d48;
 	color: white;
 	transition: ease all 0.5s;
 }
-.Go:before,
-.Go:after {
+.loginBut:before,
+.loginBut:after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -60,18 +60,18 @@
 	background: #2e8bc0;
 	transition: 0.5s ease all;
 }
-.Go:after {
+.loginBut:after {
 	right: inherit;
 	top: inherit;
 	left: 0;
 	bottom: 0;
 }
-.Go:hover:before,
-.Go:hover:after {
+.loginBut:hover:before,
+.loginBut:hover:after {
 	width: 100%;
 	transition: 1s ease all;
 }
-.Go:focus {
+.loginBut:focus {
 	background-color: white;
 	color: #b1d4e0;
 }
