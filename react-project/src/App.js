@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Portfolio from './components/Portfolio';
 import CoinDetail from './components/CoinDetail';
+import Login from './components/Login';
 import AccountsPage from './components/AccountsPage';
 import UpdateAccountsPage from './components/UpdateAccountsPage';
 
@@ -26,6 +27,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" exact component={Landing} />
+          <Route path="/login" component={Login} />
           <Route path="/markets" exact>
             <Nav />
             <Markets />

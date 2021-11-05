@@ -10,8 +10,8 @@ export default function Landing() {
             <h1 className="LogoName">DIGITAL CRYPT</h1>
             <div className="Info">
                 <h3 className="InfoTxt">Welcome to Digital Crypt<br></br>Check out the markets!</h3>
-                <Link to="/markets">
-                    <button className="Go">BEGIN TRADING</button>
+                <Link to="/login">
+                    <button className="loginBut">LOGIN</button>
                 </Link>
             </div>
             
