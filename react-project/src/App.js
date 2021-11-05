@@ -10,6 +10,7 @@ import CoinDetail from './components/CoinDetail';
 import Login from './components/Login';
 import AccountsPage from './components/AccountsPage';
 import UpdateAccountsPage from './components/UpdateAccountsPage';
+import Registration from './components/Registration';
 
 function App() {
   const dispatch = useDispatch()
@@ -47,6 +48,10 @@ function App() {
           <Route path="/updateaccounts">
             <Nav/>
             <UpdateAccountsPage/>
+          </Route>
+          <Route path="/registration">
+            <Nav/>
+            <Registration/>
           </Route>
         </Switch>
       </div>
