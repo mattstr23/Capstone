@@ -9,12 +9,9 @@ export default function Markets() {
 
     const [searchValue, SetSearchValue] = useState('')
 
-    async function SearchCoins(name){
-        const lowerCaseName = name.toLowerCase()
-        const coinData = await fetch(`https://api.coingecko.com/api/v3/coins/${lowerCaseName}`)
-        const jsonCoinData = await coinData.json()
-        console.log(jsonCoinData)
-    }
+    const searchHandle = (e) => {SetSearchValue(e.target.value)}
+    const cryptoFilter = markets?.data?.filter(coin => 
+        coin.name.toLowerCase().includes(searchValue.toLowerCase()))
 
     return (
         <div className="marketsPage">
@@ -24,11 +21,11 @@ export default function Markets() {
                 <h4 className="greeting">Browse the markets below, click the name of the Crypto to see more on it</h4>
                 <h1 className="infoTitle">MARKETS</h1>
             </div>
-            <div><input onChange={(e) => SetSearchValue(e.target.value)}type="search" placeholder="Search by Coin"/>
-            <button onClick={()=> SearchCoins(searchValue)}>Search</button>
+            <div className="searchCont">
+                <input className="searchBar"onChange={searchHandle} type="search" placeholder="Lookup Crypto"/>
             </div>
             <div className="coinCont">
-                {markets?.data?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
+                {cryptoFilter.map((coin) => <Coin key={coin.id}coin={coin}/>)}
             </div>
 
         </div>
