@@ -29,6 +29,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Landing} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Registration} />
           <Route path="/markets" exact>
             <Nav />
             <Markets />
@@ -48,10 +49,6 @@ function App() {
           <Route path="/updateaccounts">
             <Nav/>
             <UpdateAccountsPage/>
-          </Route>
-          <Route path="/registration">
-            <Nav/>
-            <Registration/>
           </Route>
         </Switch>
       </div>
