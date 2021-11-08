@@ -13,9 +13,6 @@ export default function Markets() {
     const cryptoFilter = markets?.data?.filter(coin => 
         coin.name.toLowerCase().includes(searchValue.toLowerCase()))
 
-    
-
-
     return (
         <div className="marketsPage">
             

@@ -1,7 +1,7 @@
 .Landing {
 	width: 100%;
 	height: 100vh;
-	background-color: #0c2d48;
+	background: linear-gradient(0deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,18 +9,9 @@
 	text-align: center;
 	animation: slowLoad 3s;
 }
-.Logo {
-	background: linear-gradient(40deg, #0c2d48, #2e8bc0);
-	background-size: 500%;
-	height: 225px;
-	width: 225px;
-	animation: colorCycle 3s infinite alternate;
-	border-radius: 50%;
-}
-
 .LogoName {
-	font-family: "Orbitron", sans-serif;
-	color: #2e8bc0;
+	font-family: "Quando", serif;
+	color: #ef8b16;
 	font-size: 50px;
 	margin-top: 0;
 	margin-bottom: 0.2rem;

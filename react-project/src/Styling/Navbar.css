@@ -18,7 +18,6 @@
 .logoArea {
 	display: flex;
 	justify-content: start;
-	cursor: pointer;
 	align-items: center;
 	margin-left: 20px;
 }
@@ -56,7 +55,7 @@
 	padding-right: 0.5rem;
 }
 
-.fa-user-circle{
+.fa-user-circle {
 	font-size: 19px;
 }
 
