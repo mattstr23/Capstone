@@ -3,9 +3,18 @@ import {useSelector} from 'react-redux';
 import Coin from './Coin';
 import "../Styling/Markets.css"
 import { useState } from 'react';
+import Pagination from './Pagination';
 
 export default function Markets() {
     const markets = useSelector((state) => state.marketData);
+
+     // For Pagination
+     const [currentPage, setCurrentPage] = useState(1)
+     const [postPerPage, setPostPerPage] = useState(10)
+     const indexOfLastPost = currentPage * postPerPage;
+     const indexOfFirstPost = indexOfLastPost - postPerPage;        
+     
+     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     const [searchValue, SetSearchValue] = useState('')
 
@@ -13,6 +22,8 @@ export default function Markets() {
     const cryptoFilter = markets?.data?.filter(coin => 
         coin.name.toLowerCase().includes(searchValue.toLowerCase()))
 
+    const currentPosts = cryptoFilter?.slice(indexOfFirstPost, indexOfLastPost)
+        
     return (
         <div className="marketsPage">
             
@@ -25,8 +36,9 @@ export default function Markets() {
                 <input className="searchBar"onChange={searchHandle} type="search" placeholder="Lookup Crypto"/>
             </div>
             <div className="coinCont">
-                {cryptoFilter?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
+                { currentPosts?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
             </div>
+            <Pagination postPerPage={postPerPage} totalPosts={markets?.data?.length} paginate={paginate}/>
 
         </div>
     )
