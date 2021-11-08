@@ -2,42 +2,57 @@
 	width: 100%;
 	height: 100vh;
 	background: linear-gradient(0deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
+	text-align: center;
+	animation: slowLoad 1.5s;
+}
+.landingCont {
+	display: flex;
+	padding: 15px;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.landingLogoArea {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	margin: 10px;
+}
+.landingButCont {
+	display: flex;
 	justify-content: center;
-	text-align: center;
-	animation: slowLoad 3s;
+	flex-wrap: wrap;
 }
 .LogoName {
 	font-family: "Quando", serif;
-	color: #ef8b16;
-	font-size: 50px;
+	color: #d37506;
+	font-size: 45px;
 	margin-top: 0;
-	margin-bottom: 0.2rem;
 }
 .InfoTxt {
 	font-family: "Poppins", sans-serif;
-	color: #b1d4e0;
-	margin-top: 5px;
 	margin-bottom: 5px;
+	color: #9f2b00;
 }
-
+.pageInfo {
+	font-family: "Poppins", sans-serif;
+	margin-bottom: 15px;
+}
 .loginBut {
 	font-family: "Exo", sans-serif;
 	width: 160px;
 	height: 40px;
 	font-size: 20px;
-	color: #0c2d48;
-	background-color: #2e8bc0;
+	color: white;
+	background-color: #d37506;
 	border: none;
 	position: relative;
 	border-radius: 5px;
 	cursor: pointer;
+	margin: 10px;
 }
 .loginBut:hover {
-	background-color: #0c2d48;
-	color: white;
+	background-color: rgba(255, 255, 255, 0);
+	color: #d37506;
 	transition: ease all 0.5s;
 }
 .loginBut:before,
@@ -48,7 +63,7 @@
 	right: 0;
 	height: 2px;
 	width: 0;
-	background: #2e8bc0;
+	background: #9f2b00;
 	transition: 0.5s ease all;
 }
 .loginBut:after {
@@ -60,11 +75,55 @@
 .loginBut:hover:before,
 .loginBut:hover:after {
 	width: 100%;
-	transition: 1s ease all;
+	transition: 2s ease all;
 }
 .loginBut:focus {
-	background-color: white;
-	color: #b1d4e0;
+	background-color: #9f2b00;
+	color: white;
+}
+.regBut {
+	font-family: "Exo", sans-serif;
+	width: 160px;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	background-color: #d37506;
+	border: none;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
+}
+.regBut:hover {
+	background-color: rgba(255, 255, 255, 0);
+	color: #d37506;
+	transition: ease all 0.5s;
+}
+.regBut:before,
+.regBut:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 2px;
+	width: 0;
+	background: #9f2b00;
+	transition: 0.5s ease all;
+}
+.regBut:after {
+	left: inherit;
+	top: inherit;
+	right: 0;
+	bottom: 0;
+}
+.regBut:hover:before,
+.regBut:hover:after {
+	width: 100%;
+	transition: 2s ease all;
+}
+.regBut:focus {
+	background-color: #9f2b00;
+	color: white;
 }
 @keyframes colorCycle {
 	0% {
