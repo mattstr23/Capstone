@@ -1,0 +1,43 @@
+.registrationcomp {
+	height: 75vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    background: linear-gradient(0deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
+}
+.registrationCont {
+	background:linear-gradient(0deg, white 0%, #d37506 100%);
+	border-style:inset;
+	border-color: #e0dbd6;    
+}
+
+.inputFields{
+	display: flex;
+	flex-direction: column;
+	margin-right: 15%;
+}
+
+.registrationform{
+margin-top: 100px;
+margin-bottom:100px;
+margin-left:100px;
+margin-right:100px;
+}
+.registrationCont input{
+    margin-top: 8px;
+  margin-left: 17%;
+  border-color:#d37506 ;
+    
+    
+}
+
+button{
+	height: 30px;
+	width: 100px;
+	margin-top: 10px;
+    margin-left: 37%;
+    color:whitesmoke;
+    background-color: #d37506;
+
+}
