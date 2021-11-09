@@ -1,6 +1,6 @@
 .navbar {
 	display: flex;
-	background-color: #0c2d48;
+	background-color: #ada7a7;
 	height: 80px;
 	justify-content: center;
 	align-items: center;
@@ -19,18 +19,12 @@
 	display: flex;
 	justify-content: start;
 	align-items: center;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 .siteName {
 	text-align: center;
-	font-family: "Orbitron", sans-serif;
-	color: transparent;
-	background: linear-gradient(90deg, #145da0, #2e8bc0, #b1d4e0, white);
-	background-size: 400%;
-	letter-spacing: 3px;
-	-webkit-background-clip: text;
-	animation: colorFlow 5s linear infinite;
-	-webkit-background-size: 400%;
+	font-family: "Quando", serif;
+	color: #d37506;
 }
 .navItems {
 	display: flex;
@@ -43,7 +37,8 @@
 .navLink {
 	font-family: "Exo", sans-serif;
 	text-decoration: none;
-	color: #b1d4e0;
+	font-size: 1.2rem;
+	color: #d37506;
 	padding: 0.5rem 1rem;
 	border-bottom: 4px solid transparent;
 }
@@ -71,23 +66,23 @@
 }
 .navLinks .active {
 	color: white;
-	border-bottom: 2px solid #145da0;
+	border-bottom: 2px solid #d37506;
 }
 .menuButtons {
 	margin-right: 20px;
-	color: #b1d4e0;
+	color: #d37506;
 	font-size: 2.5rem;
 	display: none;
 	cursor: pointer;
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 675px) {
 	.navbarCont {
 		justify-content: space-between;
 	}
 	.navItems {
 		display: flex;
 		flex-direction: column;
-		background: #0c2d48;
+		background: #ada7a7;
 		width: 100%;
 		position: absolute;
 		top: 80px;
@@ -96,7 +91,7 @@
 		transition: all 0.5s ease;
 	}
 	.navItems.active {
-		background: #0c2d48;
+		background: #ada7a7;
 		left: 0px;
 		opacity: 1;
 		transition: all 0.5s ease;
@@ -107,16 +102,5 @@
 	}
 	.navLinks {
 		margin: 0;
-	}
-}
-@keyframes colorFlow {
-	0% {
-		background-position: 0 100%;
-	}
-	50% {
-		background-position: 100% 0;
-	}
-	0% {
-		background-position: 0 100%;
 	}
 }

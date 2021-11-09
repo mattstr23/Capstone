@@ -15,9 +15,9 @@ export default function Coin(props) {
             <p className="coinPrice">${props.coin.current_price}</p>
             <h4 className="coinSym">{props.coin.symbol}</h4>
             {priceChangePer < 0 ? (
-                <p className="coinChange red">{priceChange.toFixed(5)}</p>
+                <p className="coinChange red">${priceChange.toFixed(5)}</p>
             ) : (
-                <p className="coinChange green">{priceChange.toFixed(5)}</p>
+                <p className="coinChange green">${priceChange.toFixed(5)}</p>
             )}
             {priceChange < 0 ? (
                 <p className="coinPer red">{priceChangePer.toFixed(2)}%</p>

@@ -12,8 +12,8 @@ export default function Nav() {
 		    <nav className="navbar">
                 <div className="navbarCont">
 				    <div className="logoArea">
-                        <h2 className="siteName">DIGITAL<br></br>CRYPT</h2>
-				    	<img src={NavLogo} className="navLogo" alt="Digital Crypt"></img>
+						<img src={NavLogo} className="navLogo" alt="Lunar Exchange"></img>
+                        <h2 className="siteName">Lunar<br></br>Exchange</h2>
 				    </div>
 				    <ul className={clicked ? "navItems active" : "navItems"}>
 				    	<li className="navLinks">

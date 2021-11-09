@@ -4,6 +4,7 @@
 	width: 100%;
 	animation: slowLoad 1.5s;
 	text-align: center;
+	background: linear-gradient(120deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
 }
 .coinCont {
 	margin: 20px;
@@ -15,26 +16,18 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-image: url("../assets/crypPic.jpeg");
-	border-radius: 0 0 5px 5px;
-}
-.welcome {
-	font-family: "Montserrat", sans-serif;
-	color: white;
-	margin: 10px;
 }
 .greeting {
 	margin: 10px;
 	margin-bottom: 0;
 	padding-bottom: 5px;
 	font-family: "Montserrat", sans-serif;
-	color: #b1d4e0;
 }
 .infoTitle {
-	color: white;
+	color: #9f2b00;
 	margin-top: 10px;
 	text-decoration: underline;
-	font-family: "Orbitron", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 .searchBar {
 	width: 200px;
