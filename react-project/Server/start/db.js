@@ -1,11 +1,6 @@
-const Pool = require("pg").Pool;
-
-const creds = new Pool({
-	host: "fanny.db.elephantsql.com",
-	port: 5432,
-	database: "soejbsoj",
-	user: "soejbsoj",
-	password: "g5Fj9W9_eiyCwZUo22G18RKW57XGXw0F",
-});
+const pg = require("pg");
+const creds = new pg.Client(
+	"postgres://soejbsoj:g5Fj9W9_eiyCwZUo22G18RKW57XGXw0F@fanny.db.elephantsql.com/soejbsoj"
+);
 
 module.exports = creds;
