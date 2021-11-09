@@ -10,7 +10,7 @@ export default function Markets() {
 
      // For Pagination
      const [currentPage, setCurrentPage] = useState(1)
-     const [postPerPage, setPostPerPage] = useState(10)
+     const [postPerPage, setPostPerPage] = useState(25)
      const indexOfLastPost = currentPage * postPerPage;
      const indexOfFirstPost = indexOfLastPost - postPerPage;        
      
@@ -26,11 +26,9 @@ export default function Markets() {
         
     return (
         <div className="marketsPage">
-            
             <div className="infoArea">
-                <h1 className="welcome">Welcome to Digital Crypt</h1>
-                <h4 className="greeting">Browse the markets below, click the name of the Crypto to see more on it</h4>
                 <h1 className="infoTitle">MARKETS</h1>
+                <h4 className="greeting">Browse the markets below, click the name of the Crypto to see more on it</h4>
             </div>
             <div className="searchCont">
                 <input className="searchBar"onChange={searchHandle} type="search" placeholder="Lookup Crypto"/>
@@ -39,7 +37,6 @@ export default function Markets() {
                 { currentPosts?.map((coin) => <Coin key={coin.id}coin={coin}/>)}
             </div>
             <Pagination postPerPage={postPerPage} totalPosts={markets?.data?.length} paginate={paginate}/>
-
         </div>
     )
 }
