@@ -14,22 +14,28 @@ app.get("/", (req, res) => {
 
 app.post("/registerUser", async (req, res) => {
 	const hash = await bcrypt.hash(req.body.password, 10);
+	const email = req.body.email;
+	const password = req.body.password;
+	const firstName = req.body.firstName;
+	const lastName = req.body.lastName;
 	// const insertUser = async () => {
 	//     const user = await client.query(`INSERT INTO Users (firstName, lastName, email, password) VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${hash}');`)
 	// }
 	creds.connect((err, client, release) => {
-		creds.query(
-			`INSERT INTO "Users" ("firstName", "lastName", "email", "password") VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${hash}');`,
-			(err, result) => {
-				console.log(result);
-				console.log(err);
-				// if (err) {
-				// 	res.status(400).send(err.stack);
-				res.send(result);
-				// }
-				// res.status(200).send(result, hash);
-			}
-		);
+		if (email && password && lastName && firstName) {
+			creds.query(
+				`INSERT INTO "Users" ("firstName", "lastName", "email", "password") VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${hash}');`,
+				(err, result) => {
+					// if (err) {
+					// 	res.status(400).send(err.stack);
+					res.send(result);
+					if (result) {
+						res.redirect("/login");
+					}
+					// res.status(200).send(result, hash);
+				}
+			);
+		}
 	});
 });
 
