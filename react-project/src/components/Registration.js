@@ -1,21 +1,11 @@
-import React, { useState } from "react";
-import { dispatchUserInfo } from "../redux/actions/RegistrationActions";
-import { useDispatch as dispatch } from "react-redux";
+import React from "react";
 import "../Styling/Registration.css"
 import Logo from '../assets/LandingLogo.png'
 
 export default function Registration() {
-    const [firstName, setFirstName]= useState([]);
-    const [lastName,setLastName]= useState([]);
-    const [email, setEmail]= useState([]);
-    const [password, setPassword]= useState([]);
-
-    const registrationInfo =
-    {
-        firstName,
-        lastName,
-        email,
-        password,
+    
+    function handleChange(event){
+        console.log(event.target.value)
     }
     return (
         <div className="registrationcomp">
@@ -29,33 +19,27 @@ export default function Registration() {
                     <input
                     type="text"
                     placeholder="First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={handleChange}
                     />
                     <input
                     type="text"
                     placeholder="Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={handleChange}
                     />
                     <input
                     type="text"
                     placeholder="E-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                     />
                     <input
                     type="password"
                     placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
                     />
-                    <button className="registerbtn" type="submit"
-                    onClick={()=> dispatchUserInfo(dispatch, registrationInfo)}>Create Account
-                    </button>
+                    <button className="registerbtn" type="submit">Create Account</button>
                     </div>
                     <div>
-                        <h3>Already a member? <a>Log In Here</a></h3>
+                        <h3>Already a member? <a href="http://localhost:3000/login">Log In Here</a></h3>
                     </div> 
                 </div>
                 
