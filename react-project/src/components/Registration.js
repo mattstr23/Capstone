@@ -3,6 +3,7 @@ import { dispatchUserInfo } from "../redux/actions/RegistrationActions";
 import { useDispatch as dispatch } from "react-redux";
 import "../Styling/Registration.css"
 import Logo from '../assets/LandingLogo.png'
+import { sendData } from "../functions/GeneralFunctions";
 
 export default function Registration() {
     const [firstName, setFirstName]= useState([]);
@@ -17,6 +18,8 @@ export default function Registration() {
         email,
         password,
     }
+
+    console.log(registrationInfo)
     return (
         <div className="registrationcomp">
             <div className ="registrationCont">
@@ -51,7 +54,7 @@ export default function Registration() {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                     <button className="registerbtn" type="submit"
-                    onClick={()=> dispatchUserInfo(dispatch, registrationInfo)}>Create Account
+                    onClick={()=> sendData(registrationInfo)}>Create Account
                     </button>
                     </div>
                     <div>
