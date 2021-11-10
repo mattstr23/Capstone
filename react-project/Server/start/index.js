@@ -3,14 +3,16 @@ const app = express();
 const creds = require("./db");
 const PORT = 3001;
 const bcrypt = require("bcrypt");
-
+const cors = require("cors");
+// middleware
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
 	console.log("hello");
 });
 
-app.post("/createUser", async (req, res) => {
+app.post("/registerUser", async (req, res) => {
 	const hash = await bcrypt.hash(req.body.password, 10);
 	// const insertUser = async () => {
 	//     const user = await client.query(`INSERT INTO Users (firstName, lastName, email, password) VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${hash}');`)
@@ -31,22 +33,39 @@ app.post("/createUser", async (req, res) => {
 	});
 });
 
-app.get("/getUser", (req, res) => {
-	creds.connect((err, client, release) => {
-		if (err) {
-			return console.error("Error getting connected to the client", err.stack);
+app.get("/loginUser", (req, res) => {
+	const email = req.body.email;
+	const password = req.body.password;
+
+	const compare = async (results, res) => {
+		const validate = await bcrypt.compare(password, results.rows[0].password);
+		console.log("user was ", validate);
+		if (validate) {
+			// righrt here
+			res.status(200).send(results.rows[0]);
+		} else {
+			res.status(400).send("error");
 		}
-		client.query(
-			"SELECT (firstName, lastName) FROM Users" +
-				`WHERE email = ${req.body.email}`,
-			(err, result) => {
-				// if (err) {
-				// 	res.status(400).send(err.stack);
-				res.send("test");
-				// }
-				// res.status(200).send(result.rows);
-			}
-		);
+	};
+	creds.connect((err, client, release) => {
+		if (email) {
+			// let queue = creds.query(`SELECT * FROM "Users" WHERE email = '${email}'`);
+			// console.log(queue);
+			creds.query(
+				`SELECT * FROM "Users" WHERE email = '${email}'`,
+				(error, results) => {
+					if (results) {
+						compare(results, res);
+					} else {
+						res.send(error);
+					}
+					// res.end();
+				}
+			);
+		} else {
+			res.send("Please enter Email and Password!");
+			res.end();
+		}
 	});
 });
 
