@@ -7,10 +7,10 @@ import Pagination from './Pagination';
 
 export default function Markets() {
     const markets = useSelector((state) => state.marketData);
-
+    
      // For Pagination
      const [currentPage, setCurrentPage] = useState(1)
-     const [postPerPage, setPostPerPage] = useState(25)
+     const [postPerPage, setPostPerPage] = useState(50)
      const indexOfLastPost = currentPage * postPerPage;
      const indexOfFirstPost = indexOfLastPost - postPerPage;        
      
