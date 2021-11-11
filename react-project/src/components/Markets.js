@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Coin from './Coin';
 import "../Styling/Markets.css"
 import { useState } from 'react';
@@ -8,7 +8,6 @@ import Pagination from './Pagination';
 export default function Markets() {
     const markets = useSelector((state) => state.marketData);
     
-    const dispatch = useDispatch()
      // For Pagination
      const [currentPage, setCurrentPage] = useState(1)
      const [postPerPage, setPostPerPage] = useState(50)
