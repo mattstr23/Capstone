@@ -69,7 +69,7 @@ app.post("/loginUser", (req, res) => {
         }
       );
     } else {
-      res.send("Please enter Email and Password!");
+      res.status(400).send("Please enter Email and Password!");
       res.end();
     }
   });
