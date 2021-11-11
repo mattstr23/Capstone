@@ -31,13 +31,14 @@ export const sendLoginData = async (object, history, dispatch) => {
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(object),
   });
-  const userJson = await user.json();
+
   if (user.status === 200) {
+    const userJson = await user.json();
+    console.log(userJson);
+    const userID = userJson.id;
     history.push("/markets");
+    dispatch({ type: LOG_IN_USER, payload: userID });
   } else {
-    window.alert("Something went wrong", userJson);
+    alert("Invalid Email And Or Password");
   }
-  const userID = userJson.id;
-  console.log(userJson);
-  dispatch({ type: LOG_IN_USER, payload: userID });
 };
