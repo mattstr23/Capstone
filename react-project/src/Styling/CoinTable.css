@@ -1,0 +1,110 @@
+.tableContainer {
+	display: flex;
+	flex-direction: column;
+}
+.coinTable {
+	margin: 20px;
+	border-collapse: collapse;
+}
+.tableHeader {
+	height: 35px;
+}
+.headerRow {
+	position: sticky;
+	top: 80px;
+}
+.headerRow th {
+	font-family: "Montserrat", sans-serif;
+	font-size: 0.85rem;
+	background-color: #d37506;
+}
+.priceHeader,
+.per24Header,
+.per1HHeader,
+.per7DHeader,
+.volumeHeader,
+.capHeader {
+	text-align: right;
+}
+.rankHeader {
+	border-radius: 3px 0 0 0;
+}
+.emptyHeader {
+	border-radius: 0 3px 0 0;
+}
+.coinTicker {
+	border-bottom: 2px solid #d37506;
+	background-color: #d3d3cb;
+	font-family: "Montserrat", sans-serif;
+}
+.coinTicker:hover {
+	background-color: #ada7a7;
+}
+.tickRank {
+	text-align: center;
+	font-size: 0.75rem;
+}
+.tickInfo {
+	display: flex;
+	align-items: center;
+}
+.topInfo {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 40px;
+}
+.tickLogo {
+	width: 30px;
+	height: 30px;
+}
+.tickSymbol {
+	font-size: 0.7rem;
+	color: #9f2b00;
+}
+.tickName {
+	width: 75px;
+	text-align: left;
+	margin-left: 10px;
+	font-size: 0.85rem;
+}
+.tickPrice {
+	font-size: 0.85rem;
+	text-align: right;
+}
+.tick24HChange,
+.tickHourChange,
+.tickCap,
+.tickDayChange,
+.tickVolume {
+	font-size: 0.8rem;
+	text-align: right;
+	padding: 0 3px;
+}
+.red {
+	color: #f00606;
+}
+.green {
+	color: #25b825;
+}
+.buttonCell {
+	text-align: center;
+	padding-right: 5px;
+}
+.tickButton {
+	margin-left: 10px;
+	margin-right: 5px;
+	color: #d37506;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.tickButton:hover {
+	background-color: #ffffff00;
+	color: #d37506;
+	border: none;
+}
+.tickButton:focus {
+	background-color: #9f2b00;
+	color: #d37506;
+}
