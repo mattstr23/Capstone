@@ -9,11 +9,15 @@ export default function Coin(props) {
     const priceChange = props.coin.price_change_24h;
     const dispatch = useDispatch();
     return (
-        <div className="coinTick">          
-            <img className="coinLogo" src={props.coin.image} alt="Crypto"></img>
-            <h3 className="coinName"><Link to={`/markets/${props.coin.id}`}>{props.coin.name}</Link></h3>
+        <div className="coinTick">
+            <div className="mainCoinInfo">
+                <div className="subCoinFo">
+                    <img className="coinLogo" src={props.coin.image} alt="Crypto"></img>
+                    <h4 className="coinSym">{props.coin.symbol.toUpperCase()}</h4>
+                </div>
+                <h3 className="coinName"><Link to={`/markets/${props.coin.id}`}>{props.coin.name}</Link></h3>
+            </div>          
             <p className="coinPrice">${props.coin.current_price}</p>
-            <h4 className="coinSym">{props.coin.symbol}</h4>
             {priceChangePer < 0 ? (
                 <p className="coinChange red">${priceChange.toFixed(5)}</p>
             ) : (

@@ -2,42 +2,49 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	width: 100%;
 	border-bottom: 2px solid #d37506;
-	text-align: right;
 	padding: 10px 0;
 	background-color: #d3d3cb;
 	border-radius: 5px;
 	font-family: "Montserrat", sans-serif;
 }
+.mainCoinInfo {
+	display: flex;
+	align-items: center;
+}
+.subCoinFo {
+	width: 50px;
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 .coinLogo {
 	height: 30px;
 	width: 30px;
-	margin: 0 10px;
 }
 .coinName {
-	color: white;
 	text-align: left;
+	margin-left: 10px;
+	width: 115px;
 	font-size: 14px;
-	width: 50px;
-	margin: 0 25px;
 }
 .coinName a {
 	color: inherit;
 	text-decoration: inherit;
 }
+.coinSym {
+	color: #9f2b00;
+	padding-top: 5px;
+	text-align: center;
+	font-size: 0.8rem;
+}
 .coinPrice {
-	color: #b1d4e0;
 	font-size: 14px;
 	width: 80px;
 	margin: 0 10px 0 25px;
-}
-.coinSym {
-	color: white;
-	text-align: center;
-	font-size: 15px;
-	width: 60px;
-	margin-left: 25px;
 }
 .coinChange {
 	font-size: 14px;
@@ -97,46 +104,4 @@
 .addBut:focus {
 	background-color: white;
 	color: #b1d4e0;
-}
-@media screen and (max-width: 600px) {
-	.coinPer {
-		display: none;
-	}
-	.coinImg {
-		margin-right: 0;
-	}
-	.coinName {
-		margin: 0 5px;
-	}
-}
-@media screen and (max-width: 500px) {
-	.coinSym {
-		display: none;
-	}
-	.coinPrice {
-		margin-left: 5px;
-	}
-	.coinChange {
-		margin: 0 5px;
-	}
-}
-@media screen and (max-width: 375px) {
-	.coinTick {
-		flex-wrap: wrap;
-	}
-	.coinChange {
-		margin-right: 10px;
-	}
-	.addBut {
-		margin-left: 150px;
-		margin-top: 15px;
-	}
-}
-@media screen and (max-width: 320px) {
-	.coinChange {
-		margin: 15px 0px 5px 15px;
-	}
-	.addBut {
-		margin: 15px 10px 5px 0;
-	}
 }
