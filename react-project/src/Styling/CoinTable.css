@@ -1,0 +1,201 @@
+.tablePageContainer {
+	display: flex;
+	flex-direction: column;
+}
+.marketLandingCont {
+	margin: 40px 20px 0 20px;
+}
+.coinSearch {
+	height: 20px;
+	width: 150px;
+	margin-left: 20px;
+	padding-left: 10px;
+	border: 2px solid #d37506;
+	border-radius: 10px;
+	font-family: "Montserrat", sans-serif;
+}
+::-webkit-input-placeholder {
+	color: #9f2b00;
+	font-family: "Montserrat", sans-serif;
+}
+.searchHeader i {
+	color: #fcc907;
+}
+.cryptoTableInfo {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-family: "Montserrat", sans-serif;
+}
+.cryptoTableInfo h4 {
+	align-self: flex-end;
+}
+
+/* Table  */
+.coinTable {
+	margin: 5px 20px 20px 20px;
+	border-collapse: collapse;
+	background-image: url("../assets/moonBackground.jpeg");
+	border-radius: 3px 3px 0 0;
+	background-position: center;
+	background-repeat: repeat-y;
+}
+.tableHeader {
+	height: 35px;
+}
+.headerRow {
+	position: sticky;
+	top: 80px;
+}
+.headerRow th {
+	font-family: "Montserrat", sans-serif;
+	font-size: 0.85rem;
+	background-color: #d37506;
+}
+.priceHeader,
+.per24Header,
+.per1HHeader,
+.per7DHeader,
+.volumeHeader,
+.capHeader {
+	text-align: right;
+}
+.rankHeader {
+	border-radius: 3px 0 0 0;
+}
+.emptyHeader {
+	border-radius: 0 3px 0 0;
+}
+.coinTicker {
+	border-bottom: 2px solid #d37506;
+	background-color: #d3d3cbd9;
+	font-family: "Montserrat", sans-serif;
+}
+.coinTicker:hover {
+	background-color: #ada7a7;
+}
+.tickRank {
+	text-align: center;
+	font-size: 0.75rem;
+}
+.tickInfo {
+	display: flex;
+	align-items: center;
+}
+.topInfo {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 40px;
+}
+.tickLogo {
+	width: 30px;
+	height: 30px;
+}
+.tickSymbol {
+	font-size: 0.7rem;
+	color: #9f2b00;
+}
+.tickName {
+	width: 75px;
+	text-align: left;
+	margin-left: 10px;
+	font-size: 0.85rem;
+}
+.tickPrice {
+	font-size: 0.85rem;
+	text-align: right;
+}
+.tick24HChange,
+.tickHourChange,
+.tickCap,
+.tickDayChange,
+.tickVolume {
+	font-size: 0.8rem;
+	text-align: right;
+	padding: 0 3px;
+}
+.red {
+	color: #f00606;
+}
+.green {
+	color: #1b831b;
+}
+.buttonCell {
+	text-align: center;
+	padding-right: 5px;
+}
+.tickButton {
+	width: 20px;
+	height: 20px;
+	font-size: 1rem;
+	margin-left: 10px;
+	margin-right: 5px;
+	color: white;
+	background-color: #d37506;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.tickButton:hover {
+	background-color: #9f2b00;
+}
+.tickButton:focus {
+	background-color: white;
+	color: #d37506;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 500px) {
+	.cryptoTableInfo h4 {
+		width: 100px;
+		text-align: right;
+	}
+}
+
+/* Table Query */
+@media screen and (max-width: 675px) {
+	.volumeHeader,
+	.tickVolume {
+		display: none;
+	}
+}
+@media screen and (max-width: 575px) {
+	.capHeader,
+	.tickCap {
+		display: none;
+	}
+	.tickLogo {
+		width: 20px;
+		height: 20px;
+	}
+}
+@media screen and (max-width: 475px) {
+	.per7DHeader,
+	.tickDayChange,
+	.tickRank,
+	.rankHeader {
+		display: none;
+	}
+	.nameHeader {
+		border-radius: 3px 0 0 0;
+	}
+	.tickPrice,
+	.tickHourChange,
+	.tick24HChange {
+		font-size: 0.75rem;
+	}
+}
+@media screen and (max-width: 400px) {
+	.per24Header,
+	.tick24HChange {
+		display: none;
+	}
+}
+@media screen and (max-width: 350px) {
+	.per1HHeader,
+	.tickHourChange {
+		display: none;
+	}
+}
