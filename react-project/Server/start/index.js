@@ -4,9 +4,14 @@ const creds = require("./db");
 const PORT = 3001;
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+// const jwt = require("express-jwt");
+const jwt = require("jsonwebtoken");
+
+const jwtSecret = "secret123";
 // middleware
 app.use(express.json());
 app.use(cors());
+// app.use(jwt({ secret: jwtSecret, algorithms: ["HS256"] }));
 
 app.get("/", (req, res) => {
   console.log("hello");
@@ -47,10 +52,17 @@ app.post("/loginUser", (req, res) => {
     const validate = await bcrypt.compare(password, results.rows[0].password);
     console.log("user was ", validate);
     if (validate) {
-      // righrt here
+      const accessToken = jwt.sign({ name: req.body.firstName }, jwtSecret);
+      //one or the other
+      res.json({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: email,
+        accessToken,
+      });
       res.status(200).send(results.rows[0]);
     } else {
-      res.status(400).send("error");
+      res.status(400).send("User not authenticated");
     }
   };
   creds.connect((err, client, release) => {
@@ -72,6 +84,57 @@ app.post("/loginUser", (req, res) => {
       res.status(400).send("Please enter Email and Password!");
       res.end();
     }
+  });
+});
+
+app.get("/accounts", (req, res) => {
+  creds.connect((err, client, release) => {
+    const authHeader = req.headers["authorization"];
+    console.log(authHeader);
+    if (authHeader) {
+      let token = authHeader.split(" ")[1];
+      const decoded = jwt.verify(token, jwtSecret);
+      if (decoded) {
+        const email = decoded.email;
+      }
+    }
+    creds.query(`SELECT * FROM "Users"`, (error, results) => {
+      if (results) {
+        res.send(results);
+      } else {
+        res.send(error);
+      }
+    });
+  });
+});
+
+app.delete("/deleteUser", (req, res) => {
+  creds.connect((err, client, release) => {
+    creds.query(
+      `DELETE FROM "Users" WHERE email = ${req.body.email}`,
+      (error, results) => {
+        if (results) {
+          res.send(results);
+        } else {
+          res.send(error);
+        }
+      }
+    );
+  });
+});
+
+app.put("/updateUser", (req, res) => {
+  creds.connect((err, client, release) => {
+    creds.query(
+      `UPDATE "Users" SET email = ${req.body.email}, firstName = ${req.body.firstName}, lastName = ${req.body.lastName}, password = ${req.body.password} WHERE email = ${req.body.email}`,
+      (error, results) => {
+        if (results) {
+          res.send(results);
+        } else {
+          res.send(error);
+        }
+      }
+    );
   });
 });
 
