@@ -35,9 +35,9 @@ export const sendLoginData = async (object, history, dispatch) => {
   if (user.status === 200) {
     const userJson = await user.json();
     console.log(userJson);
-    const userID = userJson.id;
+    // const userID = userJson.id;
     history.push("/markets");
-    dispatch({ type: LOG_IN_USER, payload: userID });
+    // dispatch({ type: LOG_IN_USER, payload: userID });
   } else {
     alert("Invalid Email And Or Password");
   }

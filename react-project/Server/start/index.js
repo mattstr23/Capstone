@@ -55,12 +55,14 @@ app.post("/loginUser", (req, res) => {
       const accessToken = jwt.sign({ name: req.body.firstName }, jwtSecret);
       //one or the other
       res.json({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: email,
+        firstName: results.rows[0].firstName,
+        lastName: results.rows[0].lastName,
+        email: results.rows[0].email,
+        id: results.rows[0].id,
         accessToken,
       });
-      res.status(200).send(results.rows[0]);
+      console.log(res);
+      res.status(200).send(res);
     } else {
       res.status(400).send("User not authenticated");
     }
@@ -73,6 +75,7 @@ app.post("/loginUser", (req, res) => {
         `SELECT * FROM "Users" WHERE email = '${email}'`,
         (error, results) => {
           if (results) {
+            // console.log(results);
             compare(results, res);
           } else {
             res.send(error);
@@ -126,7 +129,7 @@ app.delete("/deleteUser", (req, res) => {
 app.put("/updateUser", (req, res) => {
   creds.connect((err, client, release) => {
     creds.query(
-      `UPDATE "Users" SET email = ${req.body.email}, firstName = ${req.body.firstName}, lastName = ${req.body.lastName}, password = ${req.body.password} WHERE email = ${req.body.email}`,
+      `UPDATE "Users" SET email = ${req.body.email}, firstName = ${req.body.firstName}, lastName = ${req.body.lastName}, password = ${req.body.password} WHERE id = ${req.body.email}`,
       (error, results) => {
         if (results) {
           res.send(results);
