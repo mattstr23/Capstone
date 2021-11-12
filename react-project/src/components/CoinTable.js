@@ -10,7 +10,7 @@ export default function CoinTable() {
 	const searchHandle = (e) => {
 		SetSearchValue(e.target.value);
 	};
-	// This filters through the coins, formats the price on each coin, replaces coin.current price to be the new formatted price
+	// This filters through the coins, formats the price on each coin, replaces coin.current_price to be the new formatted price
 	const formatCrypto = (coin) => {
 		const format = coins?.data?.map((crypto) => {
 			const price = formatCurrency(crypto.current_price, "USD", "en", false);
@@ -24,8 +24,18 @@ export default function CoinTable() {
 	const cryptoFilter = formattedCoins?.filter((coin) => coin.name.toLowerCase().includes(searchValue.toLowerCase()));
 
 	return (
-		<div className="tableContainer">
-			<input className="searchBar" onChange={searchHandle} type="search" placeholder="Lookup Crypto" />
+		<div className="tablePageContainer">
+			<div className="marketLandingCont">
+				<div className="cryptoTableInfo">
+					<div className="cryptoSearchCont">
+						<h3 className="searchHeader">
+							Market Search <i class="fas fa-search"></i>
+						</h3>
+						<input className="coinSearch" onChange={searchHandle} type="text" placeholder="Crypto Name" />
+					</div>
+					<h4>Cryptos Ranked by Market Cap</h4>
+				</div>
+			</div>
 			<table className="coinTable">
 				<thead className="tableHeader">
 					<tr className="headerRow">
