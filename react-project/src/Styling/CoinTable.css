@@ -3,8 +3,12 @@
 	flex-direction: column;
 }
 .coinTable {
-	margin: 20px;
+	margin: 5px 20px 20px 20px;
 	border-collapse: collapse;
+	background-image: url("../assets/moonBackground.jpeg");
+	border-radius: 3px 3px 0 0;
+	background-position: center;
+	background-repeat: repeat-y;
 }
 .tableHeader {
 	height: 35px;
@@ -34,7 +38,7 @@
 }
 .coinTicker {
 	border-bottom: 2px solid #d37506;
-	background-color: #d3d3cb;
+	background-color: #d3d3cbd9;
 	font-family: "Montserrat", sans-serif;
 }
 .coinTicker:hover {
@@ -85,26 +89,72 @@
 	color: #f00606;
 }
 .green {
-	color: #25b825;
+	color: #1b831b;
 }
 .buttonCell {
 	text-align: center;
 	padding-right: 5px;
 }
 .tickButton {
+	width: 20px;
+	height: 20px;
+	font-size: 1rem;
 	margin-left: 10px;
 	margin-right: 5px;
-	color: #d37506;
+	color: white;
+	background-color: #d37506;
 	border: none;
 	border-radius: 50%;
 	cursor: pointer;
 }
 .tickButton:hover {
-	background-color: #ffffff00;
-	color: #d37506;
-	border: none;
+	background-color: #9f2b00;
 }
 .tickButton:focus {
-	background-color: #9f2b00;
+	background-color: white;
 	color: #d37506;
+}
+@media screen and (max-width: 675px) {
+	.volumeHeader,
+	.tickVolume {
+		display: none;
+	}
+}
+@media screen and (max-width: 575px) {
+	.capHeader,
+	.tickCap {
+		display: none;
+	}
+	.tickLogo {
+		width: 20px;
+		height: 20px;
+	}
+}
+@media screen and (max-width: 475px) {
+	.per7DHeader,
+	.tickDayChange,
+	.tickRank,
+	.rankHeader {
+		display: none;
+	}
+	.nameHeader {
+		border-radius: 3px 0 0 0;
+	}
+	.tickPrice,
+	.tickHourChange,
+	.tick24HChange {
+		font-size: 0.75rem;
+	}
+}
+@media screen and (max-width: 400px) {
+	.per24Header,
+	.tick24HChange {
+		display: none;
+	}
+}
+@media screen and (max-width: 350px) {
+	.per1HHeader,
+	.tickHourChange {
+		display: none;
+	}
 }
