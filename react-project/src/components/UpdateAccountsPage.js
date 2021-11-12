@@ -9,7 +9,10 @@ export default function AccountsPage() {
              <div className="accountInfoHeader"><h1>Update Account</h1>
              </div>
 
-             <div className="infoDiv" id="username"><h2>New Username: </h2> 
+             <div className="infoDiv" id="username"><h2>New First Name: </h2> 
+             <input type="text" placeholder="Username" className="inputField" id ="usernameInput"></input>
+             </div>
+             <div className="infoDiv" id="username"><h2>New Last Name: </h2> 
              <input type="text" placeholder="Username" className="inputField" id ="usernameInput"></input>
              </div>
 
