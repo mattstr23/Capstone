@@ -34,6 +34,10 @@ export const sendLoginData = async (object, history, dispatch) => {
 
   if (user.status === 200) {
     const userJson = await user.json();
+    const token = userJson.accessToken;
+    const id = userJson.id;
+    localStorage.setItem("jsonwebtoken", token);
+    localStorage.setItem("id", id);
     console.log(userJson);
     // const userID = userJson.id;
     history.push("/markets");

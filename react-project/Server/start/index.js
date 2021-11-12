@@ -78,7 +78,7 @@ app.post("/loginUser", (req, res) => {
             // console.log(results);
             compare(results, res);
           } else {
-            res.send(error);
+            res.status(400).send(error);
           }
           // res.end();
         }
