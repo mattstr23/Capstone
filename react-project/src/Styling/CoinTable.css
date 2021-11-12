@@ -1,7 +1,37 @@
-.tableContainer {
+.tablePageContainer {
 	display: flex;
 	flex-direction: column;
 }
+.marketLandingCont {
+	margin: 40px 20px 0 20px;
+}
+.coinSearch {
+	height: 20px;
+	width: 150px;
+	margin-left: 20px;
+	padding-left: 10px;
+	border: 2px solid #d37506;
+	border-radius: 10px;
+	font-family: "Montserrat", sans-serif;
+}
+::-webkit-input-placeholder {
+	color: #9f2b00;
+	font-family: "Montserrat", sans-serif;
+}
+.searchHeader i {
+	color: #fcc907;
+}
+.cryptoTableInfo {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	font-family: "Montserrat", sans-serif;
+}
+.cryptoTableInfo h4 {
+	align-self: flex-end;
+}
+
+/* Table  */
 .coinTable {
 	margin: 5px 20px 20px 20px;
 	border-collapse: collapse;
@@ -114,6 +144,17 @@
 	background-color: white;
 	color: #d37506;
 }
+
+/* Media Query */
+
+@media screen and (max-width: 500px) {
+	.cryptoTableInfo h4 {
+		width: 100px;
+		text-align: right;
+	}
+}
+
+/* Table Query */
 @media screen and (max-width: 675px) {
 	.volumeHeader,
 	.tickVolume {
