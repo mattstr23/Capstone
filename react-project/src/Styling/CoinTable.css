@@ -14,7 +14,7 @@
 	border-radius: 10px;
 	font-family: "Montserrat", sans-serif;
 }
-::-webkit-input-placeholder {
+.coinSearch::-webkit-input-placeholder {
 	color: #9f2b00;
 	font-family: "Montserrat", sans-serif;
 }
@@ -98,6 +98,7 @@
 }
 .tickName {
 	width: 75px;
+	color: #d37506;
 	text-align: left;
 	margin-left: 10px;
 	font-size: 0.85rem;
