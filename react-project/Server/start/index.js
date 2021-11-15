@@ -52,14 +52,20 @@ app.post("/loginUser", (req, res) => {
 		const validate = await bcrypt.compare(password, results.rows[0].password);
 		console.log("user was ", validate);
 		if (validate) {
-			const accessToken = jwt.sign({ name: req.body.firstName }, jwtSecret);
+			// const accessToken = jwt.sign({ name: req.body.firstName }, jwtSecret);
+
 			//one or the other
-			res.json({
+			const payload = res.json({
 				firstName: results.rows[0].firstName,
 				lastName: results.rows[0].lastName,
 				email: results.rows[0].email,
 				id: results.rows[0].id,
-				accessToken,
+				// accessToken,
+			});
+			const accessToken = jwt.encode({
+				payload,
+				secret: jwtSecret,
+				algorithms: ["HS256"],
 			});
 			console.log(res);
 			res.status(200).send(res);
@@ -90,18 +96,18 @@ app.post("/loginUser", (req, res) => {
 	});
 });
 
-app.get("/accounts", (req, res) => {
+app.get("/accounts/:id", (req, res) => {
 	const authHeader = req.headers["authorization"];
 	console.log(authHeader);
 	if (authHeader) {
 		let token = authHeader.split(" ")[1];
 		const decoded = jwt.verify(token, jwtSecret);
 		if (decoded) {
-			const email = decoded.email;
+			const id = decoded.id;
 
 			creds.connect((err, client, release) => {
 				creds.query(
-					`SELECT * FROM "Users" WHERE email = ${email}`,
+					`SELECT * FROM "Users" WHERE id = ${id}`,
 					(error, results) => {
 						if (results) {
 							res.send(results);
