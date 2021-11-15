@@ -1,0 +1,130 @@
+.purchaseOverlay {
+	background-color: rgba(128, 128, 128, 0.543);
+	backdrop-filter: blur(10px);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+}
+.purchaseCont {
+	width: 300px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	height: 300px;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	z-index: 1000;
+	border-radius: 5px;
+	font-family: "Montserrat", sans-serif;
+}
+.modalHeader {
+	display: flex;
+	background-color: #d37506;
+	height: 40px;
+	width: 100%;
+	border-radius: 5px 5px 0 0;
+}
+.modalHeader img {
+	margin-left: 5px;
+	width: 35px;
+	height: 35px;
+}
+.headerTitle {
+	display: flex;
+	color: white;
+	align-items: center;
+}
+.headerTitle h3 {
+	margin-left: 10px;
+	font-family: "Quando", serif;
+}
+.modalClose {
+	width: 100%;
+	text-align: right;
+}
+.modalClose i {
+	justify-self: flex-end;
+	margin-right: 5px;
+	margin-top: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
+.modalClose i:hover {
+	color: white;
+}
+.purchaseInfo {
+	margin: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	background-color: #ada7a7;
+	border: 2px solid #d37506;
+	border-radius: 5px;
+	height: 220px;
+}
+.purchaseCoinInfo {
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+}
+.purchaseCoinInfo img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+.purchaseCoinInfo h2 {
+	text-align: center;
+	margin-left: 10px;
+	color: #d37506;
+}
+.purchaseQty {
+	border: none;
+	text-align: center;
+}
+.purchaseButton {
+	width: 75px;
+	height: 30px;
+	font-family: "Exo", sans-serif;
+	color: white;
+	background-color: #d37506;
+	border: none;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+.purchaseButton:hover {
+	background-color: #0c2d4800;
+	color: #d37506;
+	transition: ease all 0.5s;
+}
+.purchaseButton:before,
+.purchaseButton:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #d37506;
+	transition: 0.5s ease all;
+}
+.purchaseButton:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.purchaseButton:hover:before,
+.purchaseButton:hover:after {
+	width: 100%;
+	transition: 1s ease all;
+}
+.purchaseButton:focus {
+	background-color: #9f2b00;
+	color: #d37506;
+}
