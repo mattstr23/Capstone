@@ -91,24 +91,31 @@ app.post("/loginUser", (req, res) => {
 });
 
 app.get("/accounts", (req, res) => {
-  creds.connect((err, client, release) => {
-    const authHeader = req.headers["authorization"];
-    console.log(authHeader);
-    if (authHeader) {
-      let token = authHeader.split(" ")[1];
-      const decoded = jwt.verify(token, jwtSecret);
-      if (decoded) {
-        const email = decoded.email;
-      }
+  const authHeader = req.headers["authorization"];
+  console.log(authHeader);
+  if (authHeader) {
+    let token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, jwtSecret);
+    if (decoded) {
+      const email = decoded.email;
+
+      creds.connect((err, client, release) => {
+        creds.query(
+          `SELECT * FROM "Users" WHERE email = ${email}`,
+          (error, results) => {
+            if (results) {
+              res.send(results);
+            } else {
+              res.send(error);
+            }
+          }
+        );
+      });
     }
-    creds.query(`SELECT * FROM "Users"`, (error, results) => {
-      if (results) {
-        res.send(results);
-      } else {
-        res.send(error);
-      }
-    });
-  });
+  } else {
+    console.log("nothing");
+    res.end();
+  }
 });
 
 app.delete("/deleteUser", (req, res) => {
