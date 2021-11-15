@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "../Styling/CoinTable.css";
+import { Link } from "react-router-dom";
 import { formatCurrency } from "@coingecko/cryptoformat";
+import CoinBuy from "./CoinBuy";
 
 export default function CoinTable() {
 	const coins = useSelector((state) => state.marketData);
 
-	const [searchValue, SetSearchValue] = useState("");
+	const [openTransaction, setOpenTransaction] = useState(false);
+	const [searchValue, setSearchValue] = useState("");
+	const [currentCoin, setCurrentCoin] = useState({});
+
 	const searchHandle = (e) => {
-		SetSearchValue(e.target.value);
+		setSearchValue(e.target.value);
 	};
 	// This filters through the coins, formats the price on each coin, replaces coin.current_price to be the new formatted price
 	const formatCrypto = (coin) => {
@@ -25,6 +30,7 @@ export default function CoinTable() {
 
 	return (
 		<div className="tablePageContainer">
+			<CoinBuy open={openTransaction} close={() => setOpenTransaction(false)} coin={currentCoin} />
 			<div className="marketLandingCont">
 				<div className="cryptoTableInfo">
 					<div className="cryptoSearchCont">
@@ -75,7 +81,9 @@ export default function CoinTable() {
 									<img className="tickLogo" src={coin.image} alt="Crypto"></img>
 									<p className="tickSymbol">{coin?.symbol?.toUpperCase()}</p>
 								</div>
-								<p className="tickName">{coin.name}</p>
+								<Link style={{ textDecoration: "none", color: "inherit" }} to={{ pathname: `/markets/${coin.id}` }}>
+									<p className="tickName">{coin.name}</p>
+								</Link>
 							</td>
 							<td className="tickPrice">{coin.current_price}</td>
 							{coin?.price_change_percentage_1h_in_currency < 0 ? (
@@ -96,7 +104,14 @@ export default function CoinTable() {
 							<td className="tickVolume">${coin?.total_volume?.toLocaleString()}</td>
 							<td className="tickCap">${coin?.market_cap?.toLocaleString()}</td>
 							<td className="buttonCell">
-								<button className="tickButton">+</button>
+								<button
+									className="tickButton"
+									onClick={() => {
+										setOpenTransaction(true);
+										setCurrentCoin(coin);
+									}}>
+									+
+								</button>
 							</td>
 						</tr>
 					))}
