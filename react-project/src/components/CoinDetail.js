@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../Styling/CoinDetail.css";
+import { formatCurrency } from "@coingecko/cryptoformat";
+import PriceChange from "./PriceChange";
+import Moment from "moment";
 
 export default function CoinDetail() {
 	let location = useParams();
@@ -13,39 +16,72 @@ export default function CoinDetail() {
 		const details = await getCoin.json();
 		setInfo(details);
 	};
+
+	const price = formatCurrency(info?.market_data?.current_price?.usd, "USD", "en", false);
+
 	console.log(info);
 	return (
 		<div className="detailCont">
-			<div className="mainDetailCont">
-				<div className="mainInfo">
-					<div className="nameCont">
-						<h2>{info?.name}</h2>
-						<h3>Symbol: {info?.symbol}</h3>
+			<div className="cryptoInfo">
+				<div className="mainDetailCont">
+					<div className="cryptoMainInfo">
+						<img className="coinImg" src={info?.image?.large} alt="Crypto"></img>
+						<div className="nameInfo">
+							<h2>{info?.name}</h2>
+							<h3>{info?.symbol?.toUpperCase()}</h3>
+							<p className="ranker">Market Rank #{info?.market_cap_rank}</p>
+						</div>
 					</div>
-					<img className="coinImg" src={info?.image?.large} alt="Crypto"></img>
+					<h2 className="currentPrice">{price}</h2>
+					<h4 className="priceDifferenceHeader">24H High/Low</h4>
+					<div className="priceDifferenceCont">
+						<p className="differenceHigh">${info?.market_data?.high_24h?.usd?.toLocaleString()}</p>
+						<p className="differenceLow">${info?.market_data?.low_24h?.usd?.toLocaleString()}</p>
+					</div>
 				</div>
-				<div className="marketInfo">
-					<h3 className="marketTitle">Market Info</h3>
-					<div className="infoCont">
-						<div className="infoSet1">
-							<p className="currentPrice">Current Price: ${info?.market_data?.current_price?.usd}</p>
-							<p className="marketCapChange">Market Cap Change: {info?.market_data?.market_cap_change_24h}</p>
-							<p className="marketCapChangePer">
-								Market Cap Change: {info?.market_data?.market_cap_change_percentage_24h}%
-							</p>
+				<div className="marketInfoCont">
+					<div className="secondaryInfo">
+						<div>
+							<p>Market Cap</p>
+							<p>${info?.market_data?.market_cap?.usd?.toLocaleString()}</p>
 						</div>
-						<div className="infoSet2">
-							<p className="24High">24 Hour High: ${info?.market_data?.high_24h?.usd}</p>
-							<p className="24Low">24 Hour Low: ${info?.market_data?.low_24h?.usd}</p>
-							<p className="24Change">24 Hour Price Change: ${info?.market_data?.price_change_24h}</p>
+						<div>
+							<p>24H Cap Change</p>
+							{info?.market_data?.market_cap_change_24h < 0 ? (
+								<p className="red">${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
+							) : (
+								<p>${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
+							)}
 						</div>
-						<div className="infoSet3">
-							<p className="supply">Circulating Supply: {info?.market_data?.circulating_supply}</p>
-							<p className="maxSupply">Max Supply: {info?.market_data?.max_supply}</p>
+						<div>
+							<p>Volume</p>
+							<p>${info?.market_data?.total_volume?.usd?.toLocaleString()}</p>
+						</div>
+						<div>
+							<p>All Time High</p>
+							<p>${info?.market_data?.ath?.usd?.toLocaleString()}</p>
+						</div>
+						<div>
+							<p>All Time Low</p>
+							<p>${info?.market_data?.atl?.usd?.toLocaleString()}</p>
+						</div>
+						<div>
+							<p>Circulating Supply</p>
+							<p>{info?.market_data?.circulating_supply?.toLocaleString()}</p>
+						</div>
+						<div>
+							<p>Total Supply</p>
+							<p>{info?.market_data?.total_supply?.toLocaleString()}</p>
 						</div>
 					</div>
+					<PriceChange info={info} />
 				</div>
 			</div>
+			<Link to="/markets">
+				<button className="returnButton">
+					<i class="fas fa-backward"></i>
+				</button>
+			</Link>
 		</div>
 	);
 }
