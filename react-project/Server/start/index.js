@@ -165,18 +165,29 @@ app.put("/updateUser", (req, res) => {
 });
 
 app.delete("/removeCrypto", (req, res) => {
-	creds.connect((err, client, release) => {
-		creds.query(
-			`DELETE FROM "Wallets" WHERE id = ${req.id}`,
-			(error, results) => {
-				if (results) {
-					res.send(results);
-				} else {
-					res.send(error);
-				}
-			}
-		);
-	});
+	const authHeader = req.headers["authorization"];
+	console.log(authHeader);
+	if (authHeader) {
+		let token = authHeader.split(" ")[1];
+		const decoded = jwt.verify(token, jwtSecret);
+		if (decoded) {
+			const id = decoded.id;
+			creds.connect((err, client, release) => {
+				creds.query(
+					`DELETE FROM "Wallets" WHERE id = ${id}`,
+					(error, results) => {
+						if (results) {
+							res.send(results);
+						} else {
+							res.send(error);
+						}
+					}
+				);
+			});
+		}
+	} else {
+		res.end();
+	}
 });
 
 app.post("/addCrypto", (req, res) => {
