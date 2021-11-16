@@ -7,39 +7,56 @@ import { useEffect } from "react";
 
 export default function CoinBuy({ open, close, coin }) {
   const [qty, setQty] = useState(0);
-  const [price, setPrice] = useState();
-  const [totalPrice, setTotalPrice] = useState();
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  function setThePrice() {
-    let newNum = coin.current_price.split("");
+  // function setThePrice() {
+  //   let newNum = coin.current_price.split("");
+  //   let newResult = newNum.filter((word) => word != "$" && word != ",");
+  //   let newNewResult = newResult.join("");
+  //   let num = parseFloat(newNewResult);
+
+  //   setPrice(num);
+  // }
+
+  useEffect(() => {
+    let final = qty * price;
+    let finalFormat = final.toString();
+    setTotalPrice(finalFormat);
+  }, [qty]);
+  //
+
+  const resetPricesOnClose = (close) => {
+    setQty(0);
+    setPrice(0);
+    setTotalPrice(0);
+    close();
+  };
+
+  const formatNumbers = (coinPrice) => {
+    let newNum = coinPrice.split("");
     let newResult = newNum.filter((word) => word != "$" && word != ",");
     let newNewResult = newResult.join("");
-    let num = parseFloat(newNewResult);
+    let num = parseInt(newNewResult);
+    return num;
+  };
+  function getQty(value, coinPrice) {
+    console.log({ value });
 
-    setPrice(num);
-  }
+    const num = formatNumbers(coinPrice);
+    let amount = parseInt(value);
 
-  function getQty(value) {
-    let newNum = coin.current_price.split("");
-    let newResult = newNum.filter((word) => word != "$" && word != ",");
-    let newNewResult = newResult.join("");
-    let num = parseFloat(newNewResult);
-    setPrice(num);
-    let amount = parseFloat(value);
-    setQty(amount);
     let final = price * qty;
-    console.log(price);
-    console.log(qty);
-    // let finalFinal = parseInt(final);
-    console.log(final);
+
     let finalFinal = final.toString();
-    setTotalPrice(finalFinal);
+    setPrice(num);
+    console.log({ amount });
+    if (!value) {
+      setQty(0);
+    } else {
+      setQty(amount);
+    }
   }
-
-  //   useEffect(() => {
-  //     setThePrice();
-  //   }, []);
-
   if (!open) return null;
 
   return ReactDOM.createPortal(
@@ -51,7 +68,10 @@ export default function CoinBuy({ open, close, coin }) {
             <h3>Transaction</h3>
           </div>
           <div className="modalClose">
-            <i onClick={close} class="fas fa-times"></i>
+            <i
+              onClick={() => resetPricesOnClose(close)}
+              class="fas fa-times"
+            ></i>
           </div>
         </div>
         <div className="purchaseInfo">
@@ -61,7 +81,7 @@ export default function CoinBuy({ open, close, coin }) {
           </div>
           <p>Current Price: {coin.current_price}</p>
           <input
-            onChange={(e) => getQty(e.target.value)}
+            onChange={(e) => getQty(e.target.value, coin.current_price)}
             className="purchaseQty"
             type="number"
             min="1"
