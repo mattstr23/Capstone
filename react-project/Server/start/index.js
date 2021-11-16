@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 // const jwt = require("express-jwt");
 const jwt = require("jsonwebtoken");
+const jwt_decode = require("jwt-decode");
 
 const jwtSecret = "secret123";
 // middleware
@@ -52,23 +53,27 @@ app.post("/loginUser", (req, res) => {
 		const validate = await bcrypt.compare(password, results.rows[0].password);
 		console.log("user was ", validate);
 		if (validate) {
-			// const accessToken = jwt.sign({ name: req.body.firstName }, jwtSecret);
-
 			//one or the other
-			const payload = res.json({
-				firstName: results.rows[0].firstName,
-				lastName: results.rows[0].lastName,
-				email: results.rows[0].email,
-				id: results.rows[0].id,
-				// accessToken,
-			});
-			const accessToken = jwt.encode({
-				payload,
-				secret: jwtSecret,
-				algorithms: ["HS256"],
-			});
-			console.log(res);
-			res.status(200).send(res);
+			const accessToken = jwt.sign(
+				{
+					firstName: results.rows[0].firstName,
+					lastName: results.rows[0].lastName,
+					email: results.rows[0].email,
+					id: results.rows[0].id,
+				},
+				jwtSecret,
+				{ expiresIn: 10800 }
+			);
+
+			var ca = accessToken;
+			var decoded = jwt_decode(ca);
+			console.log("line 69", decoded);
+
+			// var base64Url = ca.split(".")[1];
+			// var decodedValue = JSON.parse(window.atob(base64Url));
+			// console.log(decodedValue);
+
+			res.status(200).send("user was authenticated");
 		} else {
 			res.status(400).send("User not authenticated");
 		}
