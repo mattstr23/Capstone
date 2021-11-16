@@ -1,6 +1,7 @@
 .tablePageContainer {
 	display: flex;
 	flex-direction: column;
+	animation: slowLoad 1.5s;
 }
 .marketLandingCont {
 	margin: 40px 20px 0 20px;
@@ -101,7 +102,7 @@
 	color: #d37506;
 	text-align: left;
 	margin-left: 10px;
-	font-size: 0.85rem;
+	font-size: 0.95rem;
 }
 .tickPrice {
 	font-size: 0.85rem;
@@ -198,5 +199,15 @@
 	.per1HHeader,
 	.tickHourChange {
 		display: none;
+	}
+}
+@keyframes slowLoad {
+	from {
+		opacity: 0;
+		transform: rotateX(0deg);
+	}
+	to {
+		opacity: 1;
+		transform: rotateX(0);
 	}
 }

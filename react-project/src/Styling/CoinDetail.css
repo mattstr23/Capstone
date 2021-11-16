@@ -1,79 +1,169 @@
 .detailCont {
-	background: rgb(211, 117, 6);
-	background: radial-gradient(
-		circle,
-		rgba(211, 117, 6, 1) 0%,
-		rgba(211, 175, 128, 1) 30%,
-		rgba(204, 174, 138, 1) 70%,
-		rgba(211, 117, 6, 1) 100%
-	);
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	font-family: "Montserrat", sans-serif;
+	background-image: url("../assets/crypPic.jpeg");
 	animation: slowLoad 1.5s;
+	height: 100vh;
 }
-.mainDetailCont {
-	margin: 25px;
-}
-.mainInfo {
-	display: flex;
-	padding: 10px;
-	justify-content: space-evenly;
-	background-color: white;
-}
-.nameCont {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	text-align: center;
-}
-.nameCont h2 {
-	font-size: 1.3rem;
-}
-.nameCont h3 {
-	font-size: 1rem;
-}
-.nameCont h4 {
-	font-size: 0.7rem;
-}
-.coinImg {
-	height: 140px;
-	width: 140px;
-}
-.marketTitle {
-	text-decoration: underline;
-	color: #145da0;
-	margin-top: 10px;
-}
-.marketInfo {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	border: 2px solid #145da0;
-	border-radius: 2px;
-	margin: 10px;
-	background-color: white;
-}
-.infoCont {
-	margin-top: 15px;
+.cryptoInfo {
+	margin: 15px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: center;
+	background-color: #d3d3cbee;
+	background-position: center;
+	border: 1px solid #9f2b00;
+	border-radius: 5px;
 }
-.infoCont p {
-	color: #0c2d48;
-	margin: 7.5px;
+.mainDetailCont {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 25px 25px 5px 25px;
 }
-.descrip {
-	font-size: 12px;
-	color: #2e8bc0;
+.cryptoMainInfo {
+	display: flex;
+}
+.nameInfo {
+	margin-left: 10px;
+}
+.nameInfo h2 {
+	color: #d37506;
+}
+.nameInfo h3 {
+	color: #9f2b00;
 	text-align: center;
-	padding: 10px;
 }
-@media screen and (max-width: 550px) {
-	.descrip {
-		display: none;
-	}
+.coinImg {
+	width: 75px;
+	height: 75px;
+}
+.marketInfoCont {
+	display: flex;
+	flex-direction: column;
+}
+.secondaryInfo {
+	margin: 20px;
+}
+.secondaryInfo div {
+	display: flex;
+	justify-content: space-between;
+	padding: 2px;
+	border-bottom: 1px solid #d3730669;
+}
+.secondaryInfo div p {
+	font-size: 14px;
+}
+.ranker {
+	margin-top: 5px;
+	padding: 3px;
+	color: white;
+	width: fit-content;
+	background-color: #d37506;
+	font-size: 10px;
+	border-radius: 5px;
+	text-align: center;
+	align-self: center;
+}
+.currentPrice {
+	margin-top: 10px;
+	text-align: center;
+}
+.priceDifferenceHeader {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.priceDifferenceCont {
+	display: flex;
+	justify-content: space-between;
+}
+
+.differenceHigh {
+	color: #1b831b;
+}
+.differenceLow {
+	color: #f00606;
+}
+.priceChangeCont {
+	border-bottom: 1px solid #b1b1b1;
+	border-radius: 5px 5px 0 0;
+	margin: 5px 10px 25px 10px;
+}
+.priceChangeCont h4 {
+	text-align: center;
+	border-radius: 5px 5px 0 0;
+	background-color: #d37506;
+	margin-bottom: 5px;
+}
+.perChangeRow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.perChangeRow h5 {
+	text-align: center;
+	text-decoration: underline;
+}
+.perChangeRow p {
+	font-size: 14px;
+}
+.perChangeRow div {
+	padding: 7.5px;
+	border-left: 1px solid #b1b1b1;
+	border-right: 1px solid #b1b1b1;
+}
+.returnButton {
+	width: 50px;
+	height: 35px;
+	font-size: 20px;
+	color: white;
+	background-color: #d37506;
+	border: none;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 25px;
+}
+.returnButton:hover {
+	background-color: rgba(255, 255, 255, 0);
+	color: #d37506;
+	transition: ease all 0.5s;
+}
+.returnButton:before,
+.returnButton:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #9f2b00;
+	transition: 0.5s ease all;
+}
+.returnButton:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.returnButton:hover:before,
+.returnButton:hover:after {
+	width: 100%;
+	transition: 2s ease all;
+}
+.returnButton:focus {
+	background-color: #9f2b00;
+	color: white;
+}
+.red {
+	color: #f00606;
+}
+.green {
+	color: #1b831b;
 }
 @keyframes slowLoad {
 	from {
