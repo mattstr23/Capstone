@@ -4,12 +4,23 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background: linear-gradient(0deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
 }
 .loginCont {
-	width: 300px;
-	height: 250px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background: linear-gradient(0deg, white 0%, #d37506 100%);
+	border-style: outset;
+	border-color: #e0dbd6;
+}
+button{
+	height:25px;
+	width: 50px;
+	margin-top:10px;
+	background-color:#d37506;
+	color:#e7ddd2;
+	border: none;
+	outline: none;
 }
