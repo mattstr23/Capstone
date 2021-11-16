@@ -1,8 +1,12 @@
 import React from 'react'
 import '../Styling/AccountsPage.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function AccountsPage() {
+
+    const [accountDetails, setAccountDetails] = useState({})
+
     return (
         <div className="mainAccountsPageDiv">
             <div className="mainAccountsInfoDiv">

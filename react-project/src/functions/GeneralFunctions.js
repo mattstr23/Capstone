@@ -39,10 +39,22 @@ export const sendLoginData = async (object, history, dispatch) => {
     localStorage.setItem("jsonwebtoken", token);
     localStorage.setItem("id", id);
     console.log(userJson);
-    // const userID = userJson.id;
-    history.push("/markets");
-    // dispatch({ type: LOG_IN_USER, payload: userID });
+    // history.push("/markets");
   } else {
     alert("Invalid Email And Or Password");
   }
+};
+
+// ===========================
+// for account info use effect
+// ===========================
+
+export const getUsersAccountInfo = async () => {
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("jswonwebtoken");
+
+  const accountInfo = await fetch(`http://localhost:3001/accounts/${id}`, {
+    method: "GET",
+    headers: { authorization: `Bearer ${token}` },
+  });
 };
