@@ -24,11 +24,9 @@ export default function Registration() {
 	return (
 		<div className="registrationcomp">
 			<div className="registrationCont">
-				<div className="registrationform">
-					<div className="logodiv">
-						<img src={Logo} className="Logo" alt="Logo"></img>
-						<h1>Join our community!</h1>
-					</div>
+				<div className="registrationform">				
+					<img src={Logo} className="Logo" alt="Logo"></img>
+					<h1>Join our community!</h1>
 					<div className="inputFields">
 						<input
 							type="text"
@@ -44,15 +42,14 @@ export default function Registration() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-						<button className="registerbtn" type="submit" onClick={() => sendData(registrationInfo, history)}>
-							Create Account
-						</button>
 					</div>
-					<div>
-						<h3>
-							Already a member? <a>Log In Here</a>
-						</h3>
-					</div>
+					<button className="registerbtn" type="submit" onClick={() => sendData(registrationInfo, history)}>
+						Create Account
+					</button>
+					<p>
+						Already a member? <a href="/login">Log In Here</a>
+					</p>
+					
 				</div>
 			</div>
 		</div>

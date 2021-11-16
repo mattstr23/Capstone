@@ -1,5 +1,6 @@
 import React from "react";
 import "../Styling/Login.css";
+import Logo from "../assets/LandingLogo.png";
 import { useState } from "react";
 import { sendLoginData } from "../functions/GeneralFunctions";
 import { useHistory } from "react-router-dom";
@@ -19,6 +20,7 @@ export default function Login() {
   return (
     <div className="logincomp">
       <div className="loginCont">
+        <img src={Logo} className="Logo" alt="Logo"></img>
         <div className="emailArea">
           <h3 className="emailTitle">Email</h3>
           <input
@@ -44,7 +46,7 @@ export default function Login() {
           Login
         </button>
         <p className="registry">
-          Not a member? Register <a>here</a>
+          Not a member? <a href="/register">Register Here</a>
         </p>
       </div>
     </div>
