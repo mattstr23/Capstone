@@ -39,7 +39,7 @@ export const sendLoginData = async (object, history, dispatch) => {
     localStorage.setItem("jsonwebtoken", token);
     localStorage.setItem("id", id);
     console.log(userJson);
-    history.push("/markets");
+    // history.push("/markets");
   } else {
     alert("Invalid Email And Or Password");
   }
@@ -50,13 +50,11 @@ export const sendLoginData = async (object, history, dispatch) => {
 // ===========================
 
 export const getUsersAccountInfo = async () => {
-const id = localStorage.getItem("id")
-const token = localStorage.getItem("jswonwebtoken")
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("jswonwebtoken");
 
   const accountInfo = await fetch(`http://localhost:3001/accounts/${id}`, {
     method: "GET",
-    headers: {'authorization' : `Bearer ${token}` }
-  })
-
-
-}
+    headers: { authorization: `Bearer ${token}` },
+  });
+};
