@@ -4,11 +4,14 @@ import "../Styling/CoinBuy.css";
 import NavLogo from "../assets/NavLogo.png";
 import { useState } from "react";
 import { useEffect } from "react";
+import { buyCrypto } from "../functions/GeneralFunctions";
 
 export default function CoinBuy({ open, close, coin }) {
   const [qty, setQty] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [coins, setCoins] = useState(coin);
+  // console.log(coin);
 
   // function setThePrice() {
   //   let newNum = coin.current_price.split("");
@@ -41,7 +44,7 @@ export default function CoinBuy({ open, close, coin }) {
     return num;
   };
   function getQty(value, coinPrice) {
-    console.log({ value });
+    // console.log({ value });
 
     const num = formatNumbers(coinPrice);
     let amount = parseInt(value);
@@ -50,7 +53,7 @@ export default function CoinBuy({ open, close, coin }) {
 
     let finalFinal = final.toString();
     setPrice(num);
-    console.log({ amount });
+    // console.log({ amount });
     if (!value) {
       setQty(0);
     } else {
@@ -91,7 +94,9 @@ export default function CoinBuy({ open, close, coin }) {
           />
           <p>Order Total</p>
           <p>${totalPrice}</p>
-          <button className="purchaseButton">Buy</button>
+          <button onClick={() => buyCrypto(coin)} className="purchaseButton">
+            Buy
+          </button>
         </div>
       </div>
     </div>,

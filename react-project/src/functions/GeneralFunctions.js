@@ -38,12 +38,12 @@ export const sendLoginData = async (object, history, dispatch) => {
 
     console.log(userJson);
     let token = userJson.token;
-    token = JSON.stringify(token);
+    // token = JSON.stringify(token);
 
     localStorage.setItem("jsonwebtoken", token);
 
     // console.log(userJson);
-    // history.push("/markets");
+    history.push("/markets");
   } else {
     alert("Invalid Email And Or Password");
   }
@@ -54,11 +54,42 @@ export const sendLoginData = async (object, history, dispatch) => {
 // ===========================
 
 export const getUsersAccountInfo = async () => {
-  const id = localStorage.getItem("id");
-  const token = localStorage.getItem("jswonwebtoken");
+  const token = localStorage.getItem("jsonwebtoken");
+  const id = token.id;
 
   const accountInfo = await fetch(`http://localhost:3001/accounts/${id}`, {
     method: "GET",
     headers: { authorization: `Bearer ${token}` },
   });
+};
+
+// ========================
+// buying crypto
+// ========================
+
+export const buyCrypto = async (object) => {
+  const token = localStorage.getItem("jsonwebtoken");
+  const placeCrypto = await fetch("http://localhost:3001/addCrypto", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(object),
+  });
+  console.log(placeCrypto);
+};
+
+// =================
+// for market
+// =================
+
+export const getUserCrypto = async () => {
+  const token = localStorage.getItem("jsonwebtoken");
+  const usersCrypto = await fetch("http://localhost:3001/allCrypto", {
+    method: "POST",
+    headers: { authorization: `Bearer ${token}` },
+  });
+  const usersCrytpoJson = await usersCrypto.json();
+  console.log(usersCrytpoJson);
 };
