@@ -89,7 +89,8 @@ export default function CoinBuy({ open, close, coin }) {
             placeholder="Qty"
             required
           />
-          <p>Order Total: $ {totalPrice}</p>
+          <p>Order Total</p>
+          <p>${totalPrice}</p>
           <button className="purchaseButton">Buy</button>
         </div>
       </div>
