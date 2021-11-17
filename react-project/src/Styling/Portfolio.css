@@ -1,15 +1,23 @@
-.portfolioTitle {
-	text-align: center;
-	margin: 20px 10px 0 10px;
-	text-decoration: underline;
-	font-family: "Orbitron", sans-serif;
-	letter-spacing: 3px;
-	background-color: #145da0;
-	color: #b1d4e0;
-	border-radius: 10px;
+.portfolio {
+	animation: slowLoad 1.5s;
+	display: flex;
+	flex-direction: column;
 }
-.portfolioCont {
-	animation: slowLoad 3s;
+.portHeaderCont {
+	padding: 5px;
+	display: flex;
+	margin-top: 25px;
+	background-color: #d37506;
+}
+.portHeaderCont img {
+	margin-left: 10px;
+	height: 35px;
+	width: 35px;
+}
+.portHeaderCont h2 {
+	margin-left: 10px;
+	font-family: "Montserrat", sans-serif;
+	color: white;
 }
 
 @keyframes slowLoad {
