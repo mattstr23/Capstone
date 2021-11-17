@@ -69,7 +69,7 @@ app.post("/loginUser", (req, res) => {
       var decoded = jwt_decode(ca);
       console.log("line 69", decoded);
       //   console.log(res);
-      res.status(200).json({ token: decoded });
+      res.status(200).json({ token: accessToken });
     } else {
       res.status(400).send("User not authenticated");
     }
@@ -181,6 +181,9 @@ app.delete("/removeCrypto", (req, res) => {
 });
 
 app.post("/addCrypto", (req, res) => {
+  console.log(req.body);
+  const newBody = JSON.stringify(req.body);
+  //   console.log(req.headers);
   const authHeader = req.headers["authorization"];
   console.log(authHeader);
   if (authHeader) {
@@ -188,10 +191,12 @@ app.post("/addCrypto", (req, res) => {
     const decoded = jwt.verify(token, jwtSecret);
     if (decoded) {
       const id = decoded.id;
+      console.log(id, "hello");
       creds.connect((err, client, release) => {
         creds.query(
-          `UPDATE "Wallets" SET "cryptosIds" = '${req.cryptosIds}, "balance" = '${req.balance}' WHERE id = ${id}`,
+          `INSERT INTO "Wallets" ("userId", "crypto")  VALUES ('${id}', '{${newBody}}')`,
           (error, results) => {
+            console.log(results);
             if (results) {
               res.send(results);
             } else {
@@ -216,7 +221,7 @@ app.post("/allCrypto", (req, res) => {
       const id = decoded.id;
       creds.connect((err, client, release) => {
         creds.query(
-          `SELECT * FROM "Wallets" WHERE id = ${id}`,
+          `SELECT * FROM "Wallets" WHERE "userId" = ${id}`,
           (error, results) => {
             if (results) {
               res.send(results);
