@@ -33,12 +33,16 @@ export const sendLoginData = async (object, history, dispatch) => {
   });
 
   if (user.status === 200) {
+    console.log(user);
     const userJson = await user.json();
-    const token = userJson.accessToken;
-    const id = userJson.id;
-    localStorage.setItem("jsonwebtoken", token);
-    localStorage.setItem("id", id);
+
     console.log(userJson);
+    let token = userJson.token;
+    token = JSON.stringify(token);
+
+    localStorage.setItem("jsonwebtoken", token);
+
+    // console.log(userJson);
     // history.push("/markets");
   } else {
     alert("Invalid Email And Or Password");
