@@ -1,4 +1,5 @@
 import { LOG_IN_USER } from "../redux/action-types/ActionTypes";
+import { ADD_CRYPT } from "../redux/action-types/ActionTypes";
 
 // ==================
 // for registering
@@ -84,12 +85,45 @@ export const buyCrypto = async (object) => {
 // for market
 // =================
 
-export const getUserCrypto = async () => {
+export const getUserCrypto = async (dispatch) => {
   const token = localStorage.getItem("jsonwebtoken");
   const usersCrypto = await fetch("http://localhost:3001/allCrypto", {
     method: "POST",
     headers: { authorization: `Bearer ${token}` },
   });
-  const usersCrytpoJson = await usersCrypto.json();
-  console.log(usersCrytpoJson);
+  const usersCryptoJson = await usersCrypto.json();
+  console.log(usersCryptoJson);
+  for (let x = 0; x < usersCryptoJson.rows.length; x++) {
+    const test2 = JSON.parse(usersCryptoJson.rows[x].crypto);
+    const cryptoDbId = usersCryptoJson.rows[x].id;
+    dispatch({
+      type: ADD_CRYPT,
+      payload: { ...test2, cryptoDbId: cryptoDbId },
+    });
+  }
+};
+
+// =================
+// for deleting crypto
+// =================
+
+export const deleteCrypto = async (object) => {
+  const token = localStorage.getItem("jsonwebtoken");
+
+  console.log(object);
+  const deletedCrypto = await fetch("http://localhost:3001/removeCrypto", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({ crypto: object }),
+    mode: "cors",
+    credentials: "same-origin",
+  });
+
+  console.log(deletedCrypto);
+  if (deletedCrypto.status === 200) {
+    window.location.reload();
+  }
 };

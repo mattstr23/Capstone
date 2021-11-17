@@ -14,9 +14,7 @@ app.use(express.json());
 app.use(cors());
 // app.use(jwt({ secret: jwtSecret, algorithms: ["HS256"] }));
 
-app.get("/", (req, res) => {
-  console.log("hello");
-});
+app.get("/", (req, res) => {});
 
 app.post("/registerUser", async (req, res) => {
   const hash = await bcrypt.hash(req.body.password, 10);
@@ -51,7 +49,7 @@ app.post("/loginUser", (req, res) => {
 
   const compare = async (results, res) => {
     const validate = await bcrypt.compare(password, results.rows[0].password);
-    console.log("user was ", validate);
+
     if (validate) {
       //one or the other
       const accessToken = jwt.sign(
@@ -67,7 +65,7 @@ app.post("/loginUser", (req, res) => {
 
       var ca = accessToken;
       var decoded = jwt_decode(ca);
-      console.log("line 69", decoded);
+
       //   console.log(res);
       res.status(200).json({ token: accessToken });
     } else {
@@ -99,7 +97,7 @@ app.post("/loginUser", (req, res) => {
 
 app.get("/account/:id", (req, res) => {
   const authHeader = req.headers["authorization"];
-  console.log(authHeader);
+
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);
@@ -141,7 +139,7 @@ app.delete("/deleteUser", (req, res) => {
 
 app.put("/updateUser", (req, res) => {
   const authHeader = req.headers["authorization"];
-  console.log(authHeader);
+
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);
@@ -165,38 +163,51 @@ app.put("/updateUser", (req, res) => {
   }
 });
 
-app.delete("/removeCrypto", (req, res) => {
-  creds.connect((err, client, release) => {
-    creds.query(
-      `DELETE FROM "Wallets" WHERE id = ${req.id}`,
-      (error, results) => {
-        if (results) {
-          res.send(results);
-        } else {
-          res.send(error);
-        }
-      }
-    );
-  });
-});
-
-app.post("/addCrypto", (req, res) => {
-  console.log(req.body);
-  const newBody = JSON.stringify(req.body);
-  //   console.log(req.headers);
+app.post("/removeCrypto", (req, res) => {
+  console.log("removed crypto");
   const authHeader = req.headers["authorization"];
   console.log(authHeader);
+  // const newBody = JSON.parse(req.body);
+  // console.log(newBody);
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);
     if (decoded) {
       const id = decoded.id;
-      console.log(id, "hello");
+      console.log(id);
       creds.connect((err, client, release) => {
         creds.query(
-          `INSERT INTO "Wallets" ("userId", "crypto")  VALUES ('${id}', '{${newBody}}')`,
+          `DELETE FROM "Wallets" WHERE "id" = ${req.body.crypto}`,
           (error, results) => {
-            console.log(results);
+            if (results) {
+              console.log("res was hit");
+              res.status(200).send(results);
+            } else {
+              console.log("er was hit");
+              res.send(error);
+            }
+          }
+        );
+      });
+    }
+  }
+});
+
+app.post("/addCrypto", (req, res) => {
+  const newBody = JSON.stringify(req.body);
+  //   console.log(req.headers);
+  const authHeader = req.headers["authorization"];
+
+  if (authHeader) {
+    let token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, jwtSecret);
+    if (decoded) {
+      const id = decoded.id;
+
+      creds.connect((err, client, release) => {
+        creds.query(
+          `INSERT INTO "Wallets" ("userId", "crypto")  VALUES ('${id}', '${newBody}')`,
+          (error, results) => {
             if (results) {
               res.send(results);
             } else {
@@ -213,7 +224,7 @@ app.post("/addCrypto", (req, res) => {
 
 app.post("/allCrypto", (req, res) => {
   const authHeader = req.headers["authorization"];
-  console.log(authHeader);
+
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);

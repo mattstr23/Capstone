@@ -4,11 +4,16 @@ import Crypt from "./Crypt";
 import "../Styling/Portfolio.css";
 import NavLogo from "../assets/NavLogo.png";
 import { getUserCrypto } from "../functions/GeneralFunctions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Portfolio() {
+  const [cryptos, setCryptos] = useState();
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getUserCrypto();
+    getUserCrypto(dispatch);
+    console.log(cryptos);
   }, []);
 
   const portfolio = useSelector((state) => state.portfolioData);

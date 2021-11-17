@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { deleteCrypt } from "../redux/actions/PortfolioActions";
 import "../Styling/Crypt.css";
 import { Link } from "react-router-dom";
+import { deleteCrypto } from "../functions/GeneralFunctions";
 
 export default function Crypt(props) {
+  const cryptId = props.crypt.id;
   console.log(props);
   const dispatch = useDispatch();
   return (
@@ -29,7 +31,7 @@ export default function Crypt(props) {
         <p className="cryptVolume">Volume: {props.crypt.total_volume}</p>
         <button
           className="crypDelete"
-          onClick={() => deleteCrypt(dispatch, props.crypt.id)}
+          onClick={() => deleteCrypto(props.crypt.cryptoDbId)}
         >
           DELETE
         </button>
