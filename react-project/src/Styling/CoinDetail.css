@@ -2,21 +2,23 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	font-family: "Montserrat", sans-serif;
 	background-image: url("../assets/crypPic.jpeg");
+	background-position: center;
+	background-size: cover;
 	animation: slowLoad 1.5s;
-	height: 100vh;
 }
 .cryptoInfo {
 	margin: 15px;
 	display: flex;
+	align-items: center;
 	flex-wrap: wrap;
 	justify-content: center;
 	background-color: #d3d3cbee;
 	background-position: center;
 	border: 1px solid #9f2b00;
 	border-radius: 5px;
+	max-width: 650px;
 }
 .mainDetailCont {
 	display: flex;
@@ -40,10 +42,6 @@
 .coinImg {
 	width: 75px;
 	height: 75px;
-}
-.marketInfoCont {
-	display: flex;
-	flex-direction: column;
 }
 .secondaryInfo {
 	margin: 20px;
@@ -81,7 +79,9 @@
 	display: flex;
 	justify-content: space-between;
 }
-
+a {
+	text-align: center;
+}
 .differenceHigh {
 	color: #1b831b;
 }
@@ -164,6 +164,11 @@
 }
 .green {
 	color: #1b831b;
+}
+@media screen and (min-width: 550px) {
+	.detailCont {
+		height: 100vh;
+	}
 }
 @keyframes slowLoad {
 	from {

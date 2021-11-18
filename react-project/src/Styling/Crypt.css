@@ -1,70 +1,90 @@
 .cryptCont {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	align-items: center;
 	flex-wrap: wrap;
-	margin: 10px;
-	margin-top: 0;
+	margin: 2.5px;
 	padding: 10px;
+	margin-top: 0;
 	font-family: "Montserrat", sans-serif;
-	background-color: #0c2d48;
-	border: 2px solid #2e8bc0;
+	background-color: #d3d3cb;
+	border: 2px outset #d37506;
 	border-radius: 2px;
+	width: 75%;
+}
+.cryptCont:hover {
+	background-color: #ada7a7;
 }
 .mainCryptInfo {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	margin: 10px;
 }
-.otherInfo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 10px;
-	color: #b1d4e0;
-}
-.otherInfo p {
-	margin: 5px;
-	font-size: 14px;
+.importantName {
+	margin-left: 10px;
 }
 .portLogo {
 	background-color: white;
 	border-radius: 50%;
-	height: 100px;
-	width: 100px;
-	margin: 3px;
+	height: 50px;
+	width: 50px;
 }
 .cryptName {
-	color: white;
-	font-size: 20px;
-	margin: 2px;
+	color: #d37506;
+	font-size: 1rem;
+	margin-bottom: 5px;
+	width: 100px;
+	text-align: center;
 }
 .cryptName a {
 	color: inherit;
 	text-decoration: inherit;
 }
 .cryptSymb {
-	color: white;
-	font-size: 16px;
-	margin: 2px;
+	color: #d37506;
+	font-size: 0.9rem;
+	text-align: center;
+}
+.crypCurrent {
+	font-size: 1.2rem;
+	color: #d37506;
+	margin-top: 15px;
+}
+.persChange {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+}
+.persChange div {
+	display: flex;
+	margin: 10px;
+}
+.crypPer1 {
+	margin-left: 5px;
+}
+.crypPer24 {
+	margin-left: 5px;
+}
+.red {
+	color: #f00606;
+}
+.green {
+	color: #1b831b;
 }
 .crypDelete {
-	width: 75px;
-	height: 35px;
+	width: 60px;
+	height: 30px;
 	font-family: "Exo", sans-serif;
-	color: #0c2d48;
-	background-color: #2e8bc0;
+	color: white;
+	background-color: #d37506;
 	border: none;
 	position: relative;
 	border-radius: 5px;
 	cursor: pointer;
 }
 .crypDelete:hover {
-	background-color: #0c2d48;
-	color: white;
-	transition: ease all 0.5s;
+	background-color: #00000000;
+	color: #d37506;
+	transition: ease all 0.3s;
 }
 .crypDelete:before,
 .crypDelete:after {
@@ -74,7 +94,7 @@
 	right: 0;
 	height: 2px;
 	width: 0;
-	background: #2e8bc0;
+	background: #9f2b00;
 	transition: 0.5s ease all;
 }
 .crypDelete:after {
@@ -90,5 +110,10 @@
 }
 .crypDelete:focus {
 	background-color: white;
-	color: #b1d4e0;
+	color: #d37506;
+}
+@media screen and (max-width: 750px) {
+	.cryptCont {
+		justify-content: center;
+	}
 }

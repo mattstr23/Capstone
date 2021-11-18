@@ -38,50 +38,49 @@ export default function CoinDetail() {
 						<p className="differenceHigh">${info?.market_data?.high_24h?.usd?.toLocaleString()}</p>
 						<p className="differenceLow">${info?.market_data?.low_24h?.usd?.toLocaleString()}</p>
 					</div>
+					<Link to="/markets">
+						<button className="returnButton">
+							<i class="fas fa-backward"></i>
+						</button>
+					</Link>
 				</div>
-				<div className="marketInfoCont">
-					<div className="secondaryInfo">
-						<div>
-							<p>Market Cap</p>
-							<p>${info?.market_data?.market_cap?.usd?.toLocaleString()}</p>
-						</div>
-						<div>
-							<p>24H Cap Change</p>
-							{info?.market_data?.market_cap_change_24h < 0 ? (
-								<p className="red">${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
-							) : (
-								<p>${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
-							)}
-						</div>
-						<div>
-							<p>Volume</p>
-							<p>${info?.market_data?.total_volume?.usd?.toLocaleString()}</p>
-						</div>
-						<div>
-							<p>All Time High</p>
-							<p>${info?.market_data?.ath?.usd?.toLocaleString()}</p>
-						</div>
-						<div>
-							<p>All Time Low</p>
-							<p>${info?.market_data?.atl?.usd?.toLocaleString()}</p>
-						</div>
-						<div>
-							<p>Circulating Supply</p>
-							<p>{info?.market_data?.circulating_supply?.toLocaleString()}</p>
-						</div>
-						<div>
-							<p>Total Supply</p>
-							<p>{info?.market_data?.total_supply?.toLocaleString()}</p>
-						</div>
+
+				<div className="secondaryInfo">
+					<div>
+						<p>Market Cap</p>
+						<p>${info?.market_data?.market_cap?.usd?.toLocaleString()}</p>
 					</div>
-					<PriceChange info={info} />
+					<div>
+						<p>24H Cap Change</p>
+						{info?.market_data?.market_cap_change_24h < 0 ? (
+							<p className="red">${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
+						) : (
+							<p>${info?.market_data?.market_cap_change_24h?.toLocaleString()}</p>
+						)}
+					</div>
+					<div>
+						<p>Volume</p>
+						<p>${info?.market_data?.total_volume?.usd?.toLocaleString()}</p>
+					</div>
+					<div>
+						<p>All Time High</p>
+						<p>${info?.market_data?.ath?.usd?.toLocaleString()}</p>
+					</div>
+					<div>
+						<p>All Time Low</p>
+						<p>${info?.market_data?.atl?.usd?.toLocaleString()}</p>
+					</div>
+					<div>
+						<p>Circulating Supply</p>
+						<p>{info?.market_data?.circulating_supply?.toLocaleString()}</p>
+					</div>
+					<div>
+						<p>Total Supply</p>
+						<p>{info?.market_data?.total_supply?.toLocaleString()}</p>
+					</div>
 				</div>
+				<PriceChange info={info} />
 			</div>
-			<Link to="/markets">
-				<button className="returnButton">
-					<i class="fas fa-backward"></i>
-				</button>
-			</Link>
 		</div>
 	);
 }
