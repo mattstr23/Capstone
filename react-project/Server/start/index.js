@@ -116,6 +116,7 @@ app.delete("/deleteUser", (req, res) => {
 	});
 });
 
+<<<<<<< Updated upstream
 app.put("/updateUser", (req, res) => {
 	const authHeader = req.headers["authorization"];
 	if (authHeader) {
@@ -139,6 +140,33 @@ app.put("/updateUser", (req, res) => {
 	} else {
 		res.end();
 	}
+=======
+app.post("/updateUser", (req, res) => {
+  const authHeader = req.headers["authorization"];
+  console.log(req.body);
+  if (authHeader) {
+    let token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, jwtSecret);
+    if (decoded) {
+      const id = decoded.id;
+      creds.connect((err, client, release) => {
+        creds.query(
+          `UPDATE "Users" SET ("email" = '${req.body.email}', "firstName" = '${req.body.firstName}', "lastName" = '${req.body.lastName}', "password" = '${req.body.password}') WHERE "id" = ('${id}')`,
+          (error, results) => {
+            console.log(error);
+            if (results) {
+              res.status(200).send(results);
+            } else {
+              res.send(error);
+            }
+          }
+        );
+      });
+    }
+  } else {
+    res.end();
+  }
+>>>>>>> Stashed changes
 });
 
 app.post("/removeCrypto", (req, res) => {

@@ -111,9 +111,9 @@ export const getUserCrypto = async (dispatch) => {
 	}
 };
 
-// =================
+// ====================
 // for deleting crypto
-// =================
+// ====================
 
 export const deleteCrypto = async (object) => {
 	const token = localStorage.getItem("jsonwebtoken");
@@ -156,4 +156,27 @@ export const requireAuth = async () => {
 		}
 	};
 	return auth;
+};
+
+// ==============================
+// for updating user account info
+// ==============================
+
+export const updateUser = async (object) => {
+  const token = localStorage.getItem("jsonwebtoken");
+
+  const updateInfo = await fetch("http://localhost:3001/updateUser", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+    mode: "cors",
+    credentials: "same-origin",
+    body: JSON.stringify(object),
+  });
+
+  if (updateInfo.status === 200) {
+    window.alert("Account successfully updated!");
+  }
 };
