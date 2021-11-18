@@ -95,7 +95,7 @@ app.post("/loginUser", (req, res) => {
   });
 });
 
-app.get("/account/:id", (req, res) => {
+app.post("/account", (req, res) => {
   const authHeader = req.headers["authorization"];
 
   if (authHeader) {
@@ -106,7 +106,7 @@ app.get("/account/:id", (req, res) => {
 
       creds.connect((err, client, release) => {
         creds.query(
-          `SELECT * FROM "Users" WHERE id = ${id}`,
+          `SELECT * FROM "Users" WHERE "id" = ${id}`,
           (error, results) => {
             if (results) {
               res.send(results);
