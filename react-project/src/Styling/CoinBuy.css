@@ -85,13 +85,12 @@
 	border: 2px inset #9f2b00;
 	background-color: #9f2b00;
 	font-family: "Quando", serif;
+	color: white;
 	text-align: center;
 	height: 25px;
 	border-radius: 15px;
 }
-.purchaseQty:active {
-	border: none;
-}
+
 .purchaseButton {
 	width: 75px;
 	height: 30px;
