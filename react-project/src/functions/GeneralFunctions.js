@@ -1,4 +1,7 @@
-import { LOG_IN_USER } from "../redux/action-types/ActionTypes";
+import {
+  GET_USER_ACCOUNT_INFO,
+  LOG_IN_USER,
+} from "../redux/action-types/ActionTypes";
 import { ADD_CRYPT } from "../redux/action-types/ActionTypes";
 
 // ==================
@@ -54,13 +57,18 @@ export const sendLoginData = async (object, history, dispatch) => {
 // for account info use effect
 // ===========================
 
-export const getUsersAccountInfo = async () => {
+export const getUsersAccountInfo = async (dispatch) => {
   const token = localStorage.getItem("jsonwebtoken");
-  const id = token.id;
 
-  const accountInfo = await fetch(`http://localhost:3001/accounts/${id}`, {
-    method: "GET",
+  const accountInfo = await fetch(`http://localhost:3001/account`, {
+    method: "POST",
     headers: { authorization: `Bearer ${token}` },
+  });
+
+  const accountInfoJson = await accountInfo.json();
+  dispatch({
+    type: GET_USER_ACCOUNT_INFO,
+    payload: accountInfoJson.rows[0],
   });
 };
 

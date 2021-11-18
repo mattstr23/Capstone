@@ -4,3 +4,4 @@ export const DELETE_CRYPT = "DELETE_CRYPT";
 export const GET_USER_INFO = "GET_USER_INFO";
 export const LOG_IN_USER = "LOG_IN_USER";
 export const GET_CRYPTS = "GET_CRYPTS";
+export const GET_USER_ACCOUNT_INFO = "GET_USER_ACCOUNT_INFO";
