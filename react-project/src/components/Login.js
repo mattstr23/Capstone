@@ -21,8 +21,8 @@ export default function Login() {
     <div className="logincomp">
       <div className="loginCont">
         <img src={Logo} className="Logo" alt="Logo"></img>
+        <h1>Login</h1>
         <div className="emailArea">
-          <h3 className="emailTitle">Email</h3>
           <input
             className="logEmail"
             placeholder="@Email"
@@ -31,7 +31,6 @@ export default function Login() {
           ></input>
         </div>
         <div className="passArea">
-          <h3 className="emailTitle">Password</h3>
           <input
             className="logPass"
             placeholder="Password"
@@ -40,13 +39,13 @@ export default function Login() {
           ></input>
         </div>
         <button
-          class="logSub"
+          className="loginbtn"
           onClick={() => sendLoginData(userData, history, dispatch)}
         >
           Login
         </button>
         <p className="registry">
-          Not a member? <a href="/register">Register Here</a>
+          Not a member? Register <a className="registerRedirect"href="/register"> Here</a>
         </p>
       </div>
     </div>
