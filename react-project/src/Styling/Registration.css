@@ -49,7 +49,7 @@
 	color: #9f2b00;
 	font-family: "Montserrat", sans-serif;
 }
-.loginRedirect a {
+.registerRedirect a {
 	text-decoration: none;
 	color: #d37506;
 }
@@ -92,4 +92,7 @@
 .registerbtn:hover:after {
 	width: 100%;
 	transition: 2s ease all;
+}
+h3{
+	text-align: center;
 }

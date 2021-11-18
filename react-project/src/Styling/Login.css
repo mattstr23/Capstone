@@ -2,25 +2,91 @@
 	height: 100vh;
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	background: linear-gradient(0deg, white 0%, #c8c8c8 65%, #4f4f4f 100%);
+	justify-content: center;
+	background-image: url("../assets/moonBackground.jpeg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	font-family: "Montserrat", sans-serif;
 }
 .loginCont {
+	background: linear-gradient(0deg, #4f4f4fc6 0%, #d37306bd 100%);
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	background: linear-gradient(0deg, white 0%, #d37506 100%);
-	border-style: outset;
-	border-color: #e0dbd6;
+	padding: 15px;
+}
+.loginCont h1 {
+	font-family: "Quando", serif;
+	color: #d3d3cbd9;
+}
+.Logo{
+	height: 200px;
+	width: 200px;
+}
+
+.loginCont input:hover {
+	border: 1px solid #9f2b00;
+}
+.loginCont input{
+	border-color: #d37506;
+	margin-top: 10px;
+	width: 185px;
+	height: 30px;
+	border-radius: 15px;
+	padding-left: 10px;
+	color: #9f2b00;
+}
+::-webkit-input-placeholder {
+	text-align: center;
+	color: #9f2b00;
+	font-family: "Montserrat", sans-serif;
+}
+.registrationRedirect a {
+	text-decoration: none;
+	color: #d37506;
 }
 button{
-	height:25px;
-	width: 50px;
-	margin-top:10px;
-	background-color:#d37506;
-	color:#e7ddd2;
+	font-family: "Exo", sans-serif;
+	width: 150px;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	background-color: #d37506;
 	border: none;
-	outline: none;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
+}
+button:before,
+button:after{
+	content:"";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: white;
+	transition: 0.5s ease all;
+
+}
+.loginbtn:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.loginbtn:hover:before,
+.loginbtn:hover:after {
+	width: 100%;
+	transition: 2s ease all;
+}
+.loginbtn:hover{
+	background-color: rgba(255, 255, 255, 0);
+	color: #9f2b00;
+	transition: ease all 0.5s;
 }
