@@ -40,13 +40,12 @@ export const sendLoginData = async (object, history, dispatch) => {
     console.log(user);
     const userJson = await user.json();
 
-    console.log(userJson);
     let token = userJson.token;
     // token = JSON.stringify(token);
 
     localStorage.setItem("jsonwebtoken", token);
+    //dispatch action to set variable to true for logged in or false for not logged in
 
-    // console.log(userJson);
     history.push("/markets");
   } else {
     alert("Invalid Email And Or Password");
@@ -136,28 +135,6 @@ export const deleteCrypto = async (object) => {
   }
 };
 
-// =====================
-// For verifying
-// =====================
-
-export const requireAuth = async () => {
-  const jwtSecret = process.env.KEY;
-  const jwt = require("jsonwebtoken");
-  const auth = (req, res, next) => {
-    const token = req.cookies.jwt;
-    if (token) {
-      jwt.verify(token, jwtSecret, (err, decoded) => {
-        if (err) {
-          res.redirect("/login");
-        } else {
-          next();
-        }
-      });
-    }
-  };
-  return auth;
-};
-
 // ==============================
 // for updating user account info
 // ==============================
@@ -178,5 +155,23 @@ export const updateUser = async (object) => {
 
   if (updateInfo.status === 200) {
     window.alert("Account successfully updated!");
+  }
+};
+export const checkLoggedIn = async (token) => {
+  const loggedIn = await fetch("http://localhost:3001/authenticateToken", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-type": "application/json",
+    },
+    mode: "cors",
+    credentials: "same-origin",
+  });
+  console.log("hello");
+  console.log(loggedIn);
+  if (loggedIn.status === 200) {
+    return true;
+  } else {
+    return false;
   }
 };

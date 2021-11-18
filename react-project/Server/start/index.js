@@ -191,6 +191,21 @@ app.post("/addCrypto", (req, res) => {
     res.end();
   }
 });
+app.post("/authenticateToken", (req, res) => {
+  const authHeader = req.headers["authorization"];
+  console.log(authHeader);
+  if (authHeader) {
+    let token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, jwtSecret);
+    if (decoded) {
+      console.log("decoded");
+      res.status(200).send(true);
+    }
+  } else {
+    console.log("hit the else route");
+    res.status(400).send(false);
+  }
+});
 
 app.post("/allCrypto", (req, res) => {
   const authHeader = req.headers["authorization"];
