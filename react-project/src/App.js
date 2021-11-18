@@ -12,6 +12,7 @@ import AccountsPage from "./components/AccountsPage";
 import UpdateAccountsPage from "./components/UpdateAccountsPage";
 import Registration from "./components/Registration";
 import CoinTable from "./components/CoinTable";
+import { requireAuth } from "./functions/GeneralFunctions";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,33 +31,40 @@ function App() {
 		<Router>
 			<div className="App">
 				<Switch>
-					<Route path="/" exact component={Landing} />
-					<Route path="/login" component={Login} />
-					<Route path="/register" component={Registration} />
-					<Route path="/markets" exact>
-						<Nav />
-						<CoinTable />
-					</Route>
-					<Route path="/extra">
-						<Nav />
-						<Markets />
-					</Route>
-					<Route path="/portfolio">
-						<Nav />
-						<Portfolio />
-					</Route>
-					<Route path="/markets/:id">
-						<Nav />
-						<CoinDetail />
-					</Route>
-					<Route path="/accounts">
-						<Nav />
-						<AccountsPage />
-					</Route>
-					<Route path="/updateaccounts">
-						<Nav />
-						<UpdateAccountsPage />
-					</Route>
+					{requireAuth ? (
+						<>
+							<Route path="/markets" exact>
+								<Nav />
+								<CoinTable />
+							</Route>
+							<Route path="/extra">
+								<Nav />
+								<Markets />
+							</Route>
+							<Route path="/portfolio">
+								<Nav />
+								<Portfolio />
+							</Route>
+							<Route path="/markets/:id">
+								<Nav />
+								<CoinDetail />
+							</Route>
+							<Route path="/accounts">
+								<Nav />
+								<AccountsPage />
+							</Route>
+							<Route path="/updateaccounts">
+								<Nav />
+								<UpdateAccountsPage />
+							</Route>
+						</>
+					) : (
+						<>
+							<Route path="/" exact component={Landing} />
+							<Route path="/login" component={Login} />
+							<Route path="/register" component={Registration} />
+						</>
+					)}
 				</Switch>
 			</div>
 		</Router>
