@@ -22,35 +22,32 @@ export default function Registration() {
 
 	console.log(registrationInfo);
 	return (
-		<div className="registrationcomp">
+		<div className="registration">
 			<div className="registrationCont">
-				<div className="registrationform">				
-					<img src={Logo} className="Logo" alt="Logo"></img>
-					<h1>Join our community!</h1>
-					<div className="inputFields">
-						<input
-							type="text"
-							placeholder="First Name"
-							value={firstName}
-							onChange={(e) => setFirstName(e.target.value)}
-						/>
-						<input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-						<input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
-						<input
-							type="password"
-							placeholder="Password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-					<button className="registerbtn" type="submit" onClick={() => sendData(registrationInfo, history)}>
-						Create Account
-					</button>
-					<p>
-						Already a member? <a href="/login">Log In Here</a>
-					</p>
-					
+				<img src={Logo} className="registerLogo" alt="Logo"></img>
+				<h1>REGISTER</h1>
+				<div className="inputFields">
+					<input
+						type="text"
+						placeholder="First Name"
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
+					/>
+					<input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+					<input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+					<input
+						type="password"
+						placeholder="Password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
 				</div>
+				<button className="registerbtn" type="submit" onClick={() => sendData(registrationInfo, history)}>
+					Create Account
+				</button>
+				<p className="loginRedirect">
+					Already a member? Log In <a href="/login">Here</a>
+				</p>
 			</div>
 		</div>
 	);
