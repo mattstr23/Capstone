@@ -153,6 +153,8 @@ export const requireAuth = async () => {
 					next();
 				}
 			});
+		} else {
+			res.redirect("/login");
 		}
 	};
 	return auth;
