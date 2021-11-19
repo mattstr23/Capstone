@@ -118,7 +118,6 @@ app.delete("/deleteUser", (req, res) => {
 
 app.post("/updateUser", (req, res) => {
   const authHeader = req.headers["authorization"];
-  console.log(req.body);
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);
@@ -126,11 +125,10 @@ app.post("/updateUser", (req, res) => {
       const id = decoded.id;
       creds.connect((err, client, release) => {
         creds.query(
-          `UPDATE "Users" SET ("email" = '${req.body.email}', "firstName" = '${req.body.firstName}', "lastName" = '${req.body.lastName}', "password" = '${req.body.password}') WHERE "id" = ('${id}')`,
+          `UPDATE "Users" SET "email" = '${req.body.email}', "firstName" = '${req.body.firstName}', "lastName" = '${req.body.lastName}', "password" = '${req.body.password}' WHERE "id" = '${id}'`,
           (error, results) => {
-            console.log(error);
             if (results) {
-              res.status(200).send(results);
+              res.status(200).send("succesful");
             } else {
               res.send(error);
             }
@@ -193,16 +191,14 @@ app.post("/addCrypto", (req, res) => {
 });
 app.post("/authenticateToken", (req, res) => {
   const authHeader = req.headers["authorization"];
-  console.log(authHeader);
+
   if (authHeader) {
     let token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, jwtSecret);
     if (decoded) {
-      console.log("decoded");
       res.status(200).send(true);
     }
   } else {
-    console.log("hit the else route");
     res.status(400).send(false);
   }
 });
@@ -232,4 +228,4 @@ app.post("/allCrypto", (req, res) => {
   }
 });
 
-app.listen(PORT, console.log(`Listening on port ${PORT}`));
+app.listen(PORT);
