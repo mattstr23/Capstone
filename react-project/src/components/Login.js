@@ -40,7 +40,7 @@ export default function Login() {
 					LOGIN
 				</button>
 				<p className="registry">
-					Not a member? Register <a href="/register"> Here</a>
+					Not a member? Register <a href="#/register"> Here</a>
 				</p>
 			</div>
 		</div>

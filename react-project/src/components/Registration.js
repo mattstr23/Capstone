@@ -46,7 +46,7 @@ export default function Registration() {
 					REGISTER
 				</button>
 				<p className="loginRedirect">
-					Already a member? Log In <a href="/login">Here</a>
+					Already a member? Log In <a href="#/login">Here</a>
 				</p>
 			</div>
 		</div>
