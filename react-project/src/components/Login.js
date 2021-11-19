@@ -31,6 +31,7 @@ export default function Login() {
 				</div>
 				<div className="passArea">
 					<input
+						type="password"
 						className="logPass"
 						placeholder="Password"
 						value={password}
