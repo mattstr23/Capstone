@@ -3,16 +3,18 @@ width: 100%;
 height: 100vh;
 display: flex;
 justify-content: center;
+align-items: center;
+font-family: "Exo", sans-serif;
 /* background-color: rgb(16, 86, 143); */
 }
 
 .mainAccountsInfoDiv{
-    margin-top: 80px;
-    background-color: rgb(35, 70, 98);
-    height: 350px;
-    width: 500px;
+    /* margin-top: 50px; */
+    background-color: #d37306bd;
+    height: fit-content;
+    width: 50%;
     border-radius: 15px;
-    color: rgb(229, 237, 240);
+    color: whitesmoke;
 }
 
 .accountInfoHeader{
@@ -47,15 +49,52 @@ justify-content: center;
     
 }
 
-.updateButtonDiv button{
+/* .updateButtonDiv button{
     width: 75px;
     padding: 4px;
     border: solid 2px rgb(177,212,223);
     background-color: transparent;
     color: rgb(177,212,223);
     font-size: 15px;
+} */
+.updateButton {
+	font-family: "Exo", sans-serif;
+	width: 150px;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	background-color: #d37506;
+	border: none;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
 }
 
-.updateButton:hover{
-background-color: rgb(57, 125, 180);
+.updateButton:hover {
+	background-color: rgba(255, 255, 255, 0);
+	color: #9f2b00;
+	transition: ease all 0.5s;
+}
+.updateButton:before,
+.updateButton:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: white;
+	transition: 0.5s ease all;
+}
+.updateButton:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.updateButton:hover:before,
+.updateButton:hover:after {
+	width: 100%;
+	transition: 2s ease all;
 }
