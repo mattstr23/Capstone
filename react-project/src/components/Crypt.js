@@ -42,7 +42,12 @@ export default function Crypt(props) {
 				</div>
 			</div>
 
-			<button className="crypDelete" onClick={() => deleteCrypto(props.crypt.cryptoDbId)}>
+			<button
+				className="crypDelete"
+				onClick={() => {
+					deleteCrypto(props.crypt.cryptoDbId);
+					alert("Crypto Removed");
+				}}>
 				REMOVE
 			</button>
 		</div>

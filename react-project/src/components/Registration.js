@@ -43,7 +43,7 @@ export default function Registration() {
 					/>
 				</div>
 				<button className="registerbtn" type="submit" onClick={() => sendData(registrationInfo, history)}>
-					Create Account
+					REGISTER
 				</button>
 				<p className="loginRedirect">
 					Already a member? Log In <a href="/login">Here</a>

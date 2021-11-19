@@ -1,5 +1,5 @@
 .logincomp {
-	height: 100vh;
+	min-height: 100vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -18,12 +18,14 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 15px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 .loginCont h1 {
 	font-family: "Quando", serif;
 	color: #d3d3cbd9;
 }
-.Logo{
+.loginLogo {
 	height: 200px;
 	width: 200px;
 }
@@ -31,7 +33,7 @@
 .loginCont input:hover {
 	border: 1px solid #9f2b00;
 }
-.loginCont input{
+.loginCont input {
 	border-color: #d37506;
 	margin-top: 10px;
 	width: 185px;
@@ -39,45 +41,45 @@
 	border-radius: 15px;
 	padding-left: 10px;
 	color: #9f2b00;
+	background-color: #d3d3cb;
 }
 ::-webkit-input-placeholder {
 	text-align: center;
 	color: #9f2b00;
 	font-family: "Montserrat", sans-serif;
 }
-.registrationRedirect a {
+a {
 	text-decoration: none;
 	color: #d37506;
 }
-button{
+.loginbtn {
 	font-family: "Exo", sans-serif;
-	width: 150px;
-	height: 40px;
+	width: 125px;
+	height: 35px;
 	font-size: 20px;
 	color: white;
 	background-color: #d37506;
 	border: none;
 	position: relative;
-	border-radius: 5px;
+	border-radius: 10px;
 	cursor: pointer;
 	margin: 10px;
 }
-button:before,
-button:after{
-	content:"";
+.loginbtn:before,
+.loginbtn:after {
+	content: "";
 	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
 	height: 2px;
 	width: 0;
 	background: white;
 	transition: 0.5s ease all;
-
 }
 .loginbtn:after {
-	right: inherit;
+	right: 0;
 	top: inherit;
-	left: 0;
+	left: inherit;
 	bottom: 0;
 }
 .loginbtn:hover:before,
@@ -85,7 +87,7 @@ button:after{
 	width: 100%;
 	transition: 2s ease all;
 }
-.loginbtn:hover{
+.loginbtn:hover {
 	background-color: rgba(255, 255, 255, 0);
 	color: #9f2b00;
 	transition: ease all 0.5s;

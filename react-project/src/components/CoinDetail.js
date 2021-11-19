@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../Styling/CoinDetail.css";
 import { formatCurrency } from "@coingecko/cryptoformat";
 import PriceChange from "./PriceChange";
@@ -18,8 +18,11 @@ export default function CoinDetail() {
 	};
 
 	const price = formatCurrency(info?.market_data?.current_price?.usd, "USD", "en", false);
+	const history = useHistory();
+	const goBack = () => {
+		history.goBack();
+	};
 
-	console.log(info);
 	return (
 		<div className="detailCont">
 			<div className="cryptoInfo">
@@ -38,11 +41,10 @@ export default function CoinDetail() {
 						<p className="differenceHigh">${info?.market_data?.high_24h?.usd?.toLocaleString()}</p>
 						<p className="differenceLow">${info?.market_data?.low_24h?.usd?.toLocaleString()}</p>
 					</div>
-					<Link to="/markets">
-						<button className="returnButton">
-							<i class="fas fa-backward"></i>
-						</button>
-					</Link>
+
+					<button className="returnButton" onClick={goBack}>
+						<i class="fas fa-backward"></i>
+					</button>
 				</div>
 
 				<div className="secondaryInfo">
