@@ -61,7 +61,6 @@
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
-	background-color: #ada7a7;
 	border: 2px solid #d37506;
 	border-radius: 5px;
 	height: 220px;
@@ -83,7 +82,7 @@
 }
 .purchaseQty {
 	border: 2px inset #9f2b00;
-	background-color: #9f2b00;
+	background-color: #ada7a7;
 	font-family: "Quando", serif;
 	color: white;
 	text-align: center;
