@@ -17,7 +17,6 @@ export const sendData = async (object, history) => {
     body: JSON.stringify(object),
   });
   const regUserJson = await regUser.json();
-  console.log(regUser);
   if (regUser.status === 200) {
     history.push("/login");
   } else {
@@ -37,11 +36,9 @@ export const sendLoginData = async (object, history, dispatch) => {
   });
 
   if (user.status === 200) {
-    console.log(user);
     const userJson = await user.json();
 
     let token = userJson.token;
-    // token = JSON.stringify(token);
 
     localStorage.setItem("jsonwebtoken", token);
     //dispatch action to set variable to true for logged in or false for not logged in
@@ -85,7 +82,6 @@ export const buyCrypto = async (object) => {
     },
     body: JSON.stringify(object),
   });
-  console.log(placeCrypto);
 };
 
 // =================
@@ -99,7 +95,6 @@ export const getUserCrypto = async (dispatch) => {
     headers: { authorization: `Bearer ${token}` },
   });
   const usersCryptoJson = await usersCrypto.json();
-  console.log(usersCryptoJson);
   for (let x = 0; x < usersCryptoJson.rows.length; x++) {
     const test2 = JSON.parse(usersCryptoJson.rows[x].crypto);
     const cryptoDbId = usersCryptoJson.rows[x].id;
@@ -117,7 +112,6 @@ export const getUserCrypto = async (dispatch) => {
 export const deleteCrypto = async (object) => {
   const token = localStorage.getItem("jsonwebtoken");
 
-  console.log(object);
   const deletedCrypto = await fetch("http://localhost:3001/removeCrypto", {
     method: "POST",
     headers: {
@@ -129,7 +123,6 @@ export const deleteCrypto = async (object) => {
     credentials: "same-origin",
   });
 
-  console.log(deletedCrypto);
   if (deletedCrypto.status === 200) {
     window.location.reload();
   }
@@ -167,8 +160,7 @@ export const checkLoggedIn = async (token) => {
     mode: "cors",
     credentials: "same-origin",
   });
-  console.log("hello");
-  console.log(loggedIn);
+
   if (loggedIn.status === 200) {
     return true;
   } else {
