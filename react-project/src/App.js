@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { dispatchMarketInfo } from "./redux/actions/MarketActions";
@@ -16,65 +16,65 @@ import { requireAuth } from "./functions/GeneralFunctions";
 import { checkLoggedIn } from "./functions/GeneralFunctions";
 
 function App() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const token = localStorage.getItem("jsonwebtoken");
-  console.log(token);
-  const loggedIn = checkLoggedIn(token);
-  console.log(loggedIn);
-  if (loggedIn) {
-    dispatch({ type: "LOGGEDIN", payload: true });
-  } else {
-    dispatch({ type: "NOTLOGGEDIN", payload: false });
-  }
+	const token = localStorage.getItem("jsonwebtoken");
+	console.log(token);
+	const loggedIn = checkLoggedIn(token);
+	console.log(loggedIn);
+	if (loggedIn) {
+		dispatch({ type: "LOGGEDIN", payload: true });
+	} else {
+		dispatch({ type: "NOTLOGGEDIN", payload: false });
+	}
 
-  useEffect(() => {
-    fetchMarkets();
-  }, []);
-  const fetchMarkets = async () => {
-    const getMarkets = await fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d"
-    );
-    const jsonMarkets = await getMarkets.json();
-    dispatchMarketInfo(dispatch, jsonMarkets);
-  };
+	useEffect(() => {
+		fetchMarkets();
+	}, []);
+	const fetchMarkets = async () => {
+		const getMarkets = await fetch(
+			"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d"
+		);
+		const jsonMarkets = await getMarkets.json();
+		dispatchMarketInfo(dispatch, jsonMarkets);
+	};
 
-  return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/markets" exact>
-            <Nav />
-            <CoinTable />
-          </Route>
-          <Route path="/extra">
-            <Nav />
-            <Markets />
-          </Route>
-          <Route path="/portfolio">
-            <Nav />
-            <Portfolio />
-          </Route>
-          <Route path="/markets/:id">
-            <Nav />
-            <CoinDetail />
-          </Route>
-          <Route path="/accounts">
-            <Nav />
-            <AccountsPage />
-          </Route>
-          <Route path="/updateaccounts">
-            <Nav />
-            <UpdateAccountsPage />
-          </Route>
+	return (
+		<Router>
+			<div className="App">
+				<Switch>
+					<Route path="/markets" exact>
+						<Nav />
+						<CoinTable />
+					</Route>
+					<Route path="/extra">
+						<Nav />
+						<Markets />
+					</Route>
+					<Route path="/portfolio">
+						<Nav />
+						<Portfolio />
+					</Route>
+					<Route path="/markets/:id">
+						<Nav />
+						<CoinDetail />
+					</Route>
+					<Route path="/accounts">
+						<Nav />
+						<AccountsPage />
+					</Route>
+					<Route path="/updateaccounts">
+						<Nav />
+						<UpdateAccountsPage />
+					</Route>
 
-          <Route path="/" exact component={Landing} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Registration} />
-        </Switch>
-      </div>
-    </Router>
-  );
+					<Route path="/" exact component={Landing} />
+					<Route path="/login" component={Login} />
+					<Route path="/register" component={Registration} />
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;
