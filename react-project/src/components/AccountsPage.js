@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getUsersAccountInfo } from "../functions/GeneralFunctions";
 import { useDispatch, useSelector } from "react-redux";
+import Logo from "../assets/LandingLogo.png";
+
 
 export default function AccountsPage() {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ export default function AccountsPage() {
       <div className="mainAccountsInfoDiv">
         <div className="accountInfoHeader">
           <h1>Account Info</h1>
+          <img className="Logo" src={Logo} alt="Logo"></img>
         </div>
 
         <div className="infoDiv" id="username">

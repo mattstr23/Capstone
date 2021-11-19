@@ -3,19 +3,18 @@
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-family: "Exo", sans-serif;
     /* background-color: rgb(16, 86, 143); */
     
     }
     
     .mainUpdateAccountsInfoDiv{
-        margin-top: 80px;
-        background-color: rgb(35, 70, 98);
-        height: 400px;
-        margin-right: 5px;
-        margin-left: 5px;
-        width: 500px;
-        border-radius: 15px;
-        color: rgb(229, 237, 240);
+        background-color: #d37306bd;
+    height: fit-content;
+    width: 50%;
+    border-radius: 15px;
+    color: whitesmoke;
     }
     
     .accountInfoHeader{
@@ -48,31 +47,57 @@
     
     .infoDiv input{
         width: 50%;
-        padding: 4.5px;
+        padding: 15px;
         border-radius: 10px;
         border: none;
     }
 
     .saveButtonDiv{
         margin-top: 30px;
+        margin-bottom: 10px;
         width: 100%;
         display: flex;
         justify-content: center;
     }
 
     .saveButtonDiv button{
-        width: 75px;
-        padding: 4px;
-        margin-left: 5px;
-        margin-right: 5px;
-        border: solid 2px rgb(177,212,223);
-        background-color: transparent;
-        color: rgb(177,212,223);
-        font-size: 15px;
+        font-family: "Exo", sans-serif;
+        width: 150px;
+        height: 40px;
+        font-size: 20px;
+        color: white;
+        background-color: #d37506;
+        border: none;
+        position: relative;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
     }
 
-    .button:hover{
-        background-color: rgb(57, 125, 180);
-        
+    button:hover{
+    background-color: rgba(255, 255, 255, 0);
+	color: #9f2b00;
+	transition: ease all 0.5s;
     }
-
+    Button:before,
+    Button:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: white;
+        transition: 0.5s ease all;
+    }
+    Button:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+    }
+    Button:hover:before,
+    Button:hover:after {
+        width: 100%;
+        transition: 2s ease all;
+    }
