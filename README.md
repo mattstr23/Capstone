@@ -9,7 +9,7 @@ DigitalCrafts group capstone project featuring a cryptocurrency market place for
 * https://hopeful-mahavira-d5e74d.netlify.app/#/ - Live Site
 * https://www.youtube.com/watch?v=7FWlimkSDMU - Video Walkthrough
 * https://github.com/mattstr23/capstone-server - Server Repo
-* https://medium.com/@MatthewValicoff/crypto-capstone-completion-e3f7b54edc71- Medium Article
+* https://medium.com/@MatthewValicoff/crypto-capstone-completion-e3f7b54edc71 - Medium Article
 ## Technologies
 * React
 * React Redux
